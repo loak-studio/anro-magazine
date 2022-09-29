@@ -1,0 +1,11 @@
+{
+    "meta":{
+        "description":"blabla magazine"
+    },
+    "navigation":{
+        "back-to-home":"Retour à l'accueil",
+        "homepage":"Accueil",
+        "categories":"Catégories",
+        "about":"A propos"
+    }
+}

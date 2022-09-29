@@ -1,0 +1,61 @@
+---
+import i18next, {t} from "i18next";
+import { HeadHrefLangs } from "astro-i18next/components";
+import Header from "../components/molecules/Header.astro";
+import "../style/app.css";
+const title = "Anro Magazine // Expert en magazine";
+const description = t('meta.description')
+const image = Astro.url.origin + "/share.png";
+const { meta } = Astro.props;
+---
+
+<html lang={i18next.language}>
+        <head>
+                <meta charset="utf-8" />
+                <meta name="viewport" content="width=device-width" />
+                <meta name="generator" content={Astro.generator} />
+                <title>
+                        {
+                                meta && meta.title
+                                        ? meta.title + " // Anro Magazine"
+                                        : title
+                        }
+                </title>
+                <HeadHrefLangs />
+                <meta name="title" content={title} />
+                <meta name="description" content={description} />
+
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={Astro.url.href} />
+                <meta property="og:title" content={title} />
+                <meta property="og:description" content={description} />
+                <meta
+                        property="og:image"
+                        content={meta && meta.image ? meta.image : image}
+                />
+                <link
+                        href="/favicon.ico"
+                        rel="shortcut icon"
+                        type="image/x-icon"
+                />
+                <meta property="twitter:card" content="summary_large_image" />
+                <meta property="twitter:url" content={Astro.url.href} />
+                <meta property="twitter:title" content={title} />
+                <meta property="twitter:description" content={description} />
+                <meta
+                        property="twitter:image"
+                        content={meta && meta.image ? meta.image : image}
+                />
+        </head>
+
+        <body class="flex flex-col min-h-screen  md:overflow-auto">
+                <div class="flex-1 w-screen overflow-x-hidden">
+                        <Header/>
+                        <slot />
+                </div>
+                
+                <script>
+                        import "../scripts/app.js";
+                </script>
+        </body>
+</html>

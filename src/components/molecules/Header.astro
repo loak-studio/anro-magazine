@@ -1,0 +1,67 @@
+---
+import { getCategories } from "../../cms/get-categories";
+import Anro from "../atoms/Anro.astro";
+import i18next, { t } from "i18next";
+import { localizePath } from "astro-i18next";
+const { data } = await getCategories({ lang: i18next.language });
+
+---
+
+<header class="flex items-center justify-between px-8 w-full mx-auto my-10">
+    <a class="" title={t('navigation.back-to-home')} href={localizePath('/')}>
+        <Anro />
+    </a>
+    <nav>
+        <ul class="flex gap-16 items-center">
+            <li>
+                <a class=" hover:underline" href={localizePath('/')}>{t("navigation.homepage")}</a>
+            </li>
+            <li class="relative">
+                <button id="hamburger-button" class="flex hover:underline items-center">
+                    <span>{t("navigation.categories")}</span>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="transition"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="#2c3e50"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"
+                        ></path>
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <ul
+                    id="dropdown"
+                    class="bg-white shadow-md border border-black p-2 hidden mt-2 opacity-0 transition absolute left-1/2 -translate-x-1/2"
+                >
+                    {
+                        data.map((link) => 
+                            <li>
+                                <a class="hover:underline" href={localizePath('/topic/'+link.attributes.slug )}>
+                                    {link.attributes.title}
+                                </a>
+                            </li>
+                        )
+                    }
+                </ul>
+            </li>
+            <li>
+                <a class=" hover:underline" href={localizePath('/a-propos')}>{t("navigation.about")}</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="">
+        <nav>
+            <ul class="flex divide-x-2">
+               <li class={"px-2" + " " + (i18next.language == "fr" ? 'font-semibold':'')}> <a href={localizePath(Astro.url.pathname,'fr')}>Français</a></li>
+               <li class={"px-2" + " " + (i18next.language == "en" ? 'font-semibold':'')} > <a href={localizePath(Astro.url.pathname,'en')}>English</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>

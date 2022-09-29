@@ -1,0 +1,17 @@
+---
+import { getCategories } from "../cms/get-categories";
+import Main from "../layouts/Main.astro";
+import i18next, { t, changeLanguage } from "i18next";
+import Category from "../components/molecules/Category.astro";
+import LastArticle from "../components/molecules/LastArticle.astro";
+
+changeLanguage("fr");
+
+const { data } = await getCategories({ lang: i18next.language });
+console.log(data);
+---
+
+<Main>
+	<LastArticle/>
+	{data.map((category,index)=><Category index={index} data={category}/>)}
+</Main>
