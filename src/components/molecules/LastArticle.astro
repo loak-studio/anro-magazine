@@ -1,3 +1,30 @@
+---
+import i18next, { t } from "i18next";
+import { api } from "../../cms/config";
+import { getLastArticle } from "../../cms/get-last-article";
+
+const { data } = await getLastArticle({ lang: i18next.language });
+const lastArticle = data[0]
+console.log(lastArticle.attributes)
+const getDateInFrench = (data) => {
+  const date = new Date(data);
+  return date.toLocaleDateString("fr-FR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
+
+---
 <section>
-    hero
+    <div class="relative">
+        <figure class="w-screen px-8 h-[80vh] overflow-hidden">
+            <img class="w-full h-full object-cover" src={api + lastArticle.attributes.thumbnail.data.attributes.url} alt="">
+        </figure>
+        <div class="absolute left-16 bottom-8 text-white">
+            <span class="block text-[80px] font-mango">{lastArticle.attributes.name}</span>
+            <h2 class="text-[100px] font-mango">{lastArticle.attributes.title}</h2>
+            <span class="text-xl font-poppins">{getDateInFrench(lastArticle.attributes.date)}</span>
+        </div>
+    </div>
 </section>

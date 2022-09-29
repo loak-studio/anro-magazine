@@ -1,5 +1,4 @@
 ---
-import { changeLanguage } from "i18next";
 import { getAbout } from "../cms/get-about";
 import Main from "../layouts/Main.astro";
 import i18next, { t, changeLanguage } from "i18next";
@@ -9,7 +8,6 @@ import AboutParagraph from "../components/molecules/AboutParagraph.astro";
 changeLanguage("fr");
 
 const { data } = await getAbout({ lang: i18next.language });
-console.log(data.attributes.content[0]);
 ---
 
 <Main>

@@ -8,7 +8,6 @@ import LastArticle from "../components/molecules/LastArticle.astro";
 changeLanguage("fr");
 
 const { data } = await getCategories({ lang: i18next.language });
-console.log(data);
 ---
 
 <Main>
