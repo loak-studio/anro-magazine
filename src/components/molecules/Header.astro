@@ -7,12 +7,20 @@ const { data } = await getCategories({ lang: i18next.language });
 
 ---
 
-<header class="flex items-center justify-between px-8 w-full mx-auto my-10">
+<header class="flex items-center justify-between px-2 lg:px-8 w-full mx-auto my-10">
+    <div class="lg:hidden z-30">
+        <button id="toggle-nav" class="hamburger hamburger--arrow " type="button">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button>
+    </div>
+      
     <a class="" title={t('navigation.back-to-home')} href={localizePath('/')}>
         <Anro />
     </a>
-    <nav>
-        <ul class="flex gap-16 items-center">
+    <nav id="main-nav" class="h-screen w-screen fixed lg:h-auto px-4 lg:px-0 lg:w-auto transition top-0 z-20 bg-white left-0 -translate-x-[500vw] lg:translate-x-0 lg:static">
+        <ul class="flex flex-col lg:flex-row h-full lg:h-auto gap-16 justify-center lg:items-center">
             <li>
                 <a class=" hover:underline" href={localizePath('/')}>{t("navigation.homepage")}</a>
             </li>
@@ -21,7 +29,7 @@ const { data } = await getCategories({ lang: i18next.language });
                     <span>{t("navigation.categories")}</span>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="transition"
+                        class="hidden lg:block transition"
                         width="20"
                         height="20"
                         viewBox="0 0 24 24"
@@ -38,7 +46,7 @@ const { data } = await getCategories({ lang: i18next.language });
                 </button>
                 <ul
                     id="dropdown"
-                    class="bg-white shadow-md border z-20 border-black p-2 hidden mt-2 opacity-0 transition absolute left-1/2 -translate-x-1/2"
+                    class="bg-white lg:shadow-md lg:border z-20 lg:border-black p-2 lg:hidden mt-2 lg:opacity-0 transition lg:absolute lg:left-1/2 lg:-translate-x-1/2"
                 >
                     {
                         data.map((link) => 
@@ -58,7 +66,7 @@ const { data } = await getCategories({ lang: i18next.language });
     </nav>
     <div class="">
         <nav>
-            <ul class="flex divide-x-2">
+            <ul class="flex flex-col lg:flex-row divide-x-2">
                <li class={"px-2" + " " + (i18next.language == "fr" ? 'font-semibold':'')}> <a href={localizePath(Astro.url.pathname,'fr')}>Français</a></li>
                <li class={"px-2" + " " + (i18next.language == "en" ? 'font-semibold':'')} > <a href={localizePath(Astro.url.pathname,'en')}>English</a></li>
             </ul>

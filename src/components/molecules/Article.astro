@@ -1,33 +1,58 @@
 ---
-import i18next, {t} from "i18next";
+import i18next, { t } from "i18next";
 import { api } from "../../cms/config";
 import { getDateInFrench } from "../../utils/get-date-in-french";
+import { localizePath } from "astro-i18next";
 const { data, main = false } = Astro.props;
 const { name, title, date } = data.attributes;
 ---
 
-<div class={(main ? "col-span-6" : "col-span-4")}>
+<div class={"flex gap-2 lg:block" + " " + (main ? "lg:col-span-6" : "lg:col-span-4")}>
     <div class="relative">
-        <figure>
+        <figure class="lg:w-full w-[185px] h-[149px] lg:h-[377px]">
             <img
-                class="w-full object-cover h-[377px]"
+                class="h-full w-full object-cover"
                 src={api + data.attributes.thumbnail.data.attributes.url}
                 alt=""
             />
         </figure>
         <h3
-            class="text-white font-mango break-words text-[53px] absolute right-5 text-right bottom-3"
+            class="text-white hidden lg:block font-mango break-words text-[53px] absolute right-5 text-right bottom-3"
         >
             {name}
         </h3>
     </div>
-    <span>{getDateInFrench(data.attributes.date)}</span>
-    <div class="flex flex-wrap gap-3 my-5">
-        {data.attributes.tags.data.map(tag=><span style="box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);" class="px-4 py-2 rounded-full">{tag.attributes.name}</span>)}
-    </div>
-    <div class="relative group">
-        <h4 class=" group-hover:underline font-poppins text-4xl">{data.attributes.title}</h4>
+    <div class="flex flex-col gap-2 lg:gap-5 lg:mt-5">
+        <h3
+            class="lg:hidden order-2 lg:order-none font-mango break-words text-sm text-[53px]"
+        > {name} 
+            
+        </h3>
+        <span class=" block font-poppins order-3 lg:order-none text-xs lg:text-lg"
+            >{getDateInFrench(data.attributes.date)} 
+        </span>
+        <div class="flex order-1 lg:order-none flex-wrap gap-3">
+            {
+                data.attributes.tags.data.map((tag) => (
+                    <span
+                        style="box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);"
+                        class="px-2 py-1 lg:px-4 text-xs lg:py-2 rounded-full"
+                    >
+                        {tag.attributes.name}
+                    </span>
+                ))
+            }
+        </div>
+        <div class="relative order-2 lg:order-none group">
+            <h4 class="group-hover:underline font-poppins text-lg lg:text-4xl">
+                {data.attributes.title}
+            </h4>
 
-        <a class="before:inset-0 before:absolute" href=""><span class="sr-only">{t('article.read')}</span></a>
+            <a
+                class="before:inset-0 before:absolute"
+                href={localizePath("/article/" + data.attributes.slug + "/")}
+                ><span class="sr-only">{t("article.read")}</span>
+            </a>
+        </div>
     </div>
 </div>

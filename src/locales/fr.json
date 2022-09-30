@@ -10,9 +10,13 @@
     },
     "newsletter":{
         "title":"newsletter",
-        "submit":"S'inscrire"
+        "submit":"S'inscrire",
+        "text":"Soyez au courant des dernières sorties et nouveautés !"
     },
     "footer":{
         "made-by":"Site internet réalisé par"
+    },
+    "article":{
+        "read-more":"Lire la suite"
     }
 }

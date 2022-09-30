@@ -7,22 +7,41 @@ import Anro from "../atoms/Anro.astro";
 
 const { data } = await getLastArticle({ lang: i18next.language });
 const lastArticle = data[0]
-console.log(lastArticle)
+console.log('ping')
+console.log(lastArticle.attributes)
 ---
-<section class=" mb-20">
+<section class=" mb-12 lg:mb-20">
     <div class="relative">
-        <figure class="w-screen px-8 h-[80vh] overflow-hidden">
-            <img class="w-full h-full object-cover" src={api + lastArticle.attributes.thumbnail.data.attributes.url} alt="">
+        <figure class="w-screen px-2 lg:px-8 h-[80vh] overflow-hidden">
+            <picture class="w-full h-full">
+              <source
+              class="w-full h-full object-cover"
+              srcset={api + lastArticle.attributes.thumbnail.data.attributes.url}
+              media="(min-width: 1000px)"
+            />
+            <source
+            class="w-full h-full object-cover"
+            srcset={api + lastArticle.attributes.mobile_thumbnail.data.attributes.url}
+            media="(max-width: 999px)"
+          />
+          <img
+              class="w-full h-full object-cover"
+              src={api + lastArticle.attributes.thumbnail.data.attributes.url}
+            />
+        </picture>
         </figure>
-        <div class="text-white absolute right-16 top-4">
-          <Anro/>
+        <div class="text-white absolute right-4 lg:right-16 top-4">
+          <span class="hidden lg:block"><Anro/></span>
           <span class="font-mango flex flex-col items-end">
             N°{lastArticle.attributes.numero}
           </span>
         </div>
-        <div class="absolute left-16 bottom-8 text-white">
-            <span class="block text-[80px] font-mango">{lastArticle.attributes.name}</span>
-            <h2 class="text-[100px] font-mango">{lastArticle.attributes.title}</h2>
+        <div class="absolute left-4 bottom-4 lg:left-16 lg:bottom-8 text-white">
+            <span class="block text-[32px] lg:text-[80px] font-mango">{lastArticle.attributes.name}</span>
+            <div class="relative group">
+              <h2 class=" text-[40px] lg:text-[100px] group-hover:underline font-mango">{lastArticle.attributes.title}</h2>
+              <a class="before:absolute before:inset-0" href="/article/"><span class="sr-only">{t('article.read-more')}</span></a>
+            </div>
             <span class="text-xl font-poppins">{getDateInFrench(lastArticle.attributes.date)}</span>
         </div>
     </div>
