@@ -38,7 +38,7 @@ const { data } = await getCategories({ lang: i18next.language });
                 </button>
                 <ul
                     id="dropdown"
-                    class="bg-white shadow-md border border-black p-2 hidden mt-2 opacity-0 transition absolute left-1/2 -translate-x-1/2"
+                    class="bg-white shadow-md border z-20 border-black p-2 hidden mt-2 opacity-0 transition absolute left-1/2 -translate-x-1/2"
                 >
                     {
                         data.map((link) => 

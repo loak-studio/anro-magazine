@@ -5,7 +5,12 @@ module.exports = {
 		extend: {
 			fontFamily:{
 				'mango':['Black Mango'],
-				'poppins':['Poppins']
+				'poppins':['Poppins'],
+				'asset':['Asset']
+			},
+			gridTemplateColumns: {
+				// Simple 16 column grid
+				'14': 'repeat(14, minmax(0, 1fr))',
 			}
 		},
 	},

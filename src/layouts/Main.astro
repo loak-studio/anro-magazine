@@ -3,6 +3,7 @@ import i18next, {t} from "i18next";
 import { HeadHrefLangs } from "astro-i18next/components";
 import Header from "../components/molecules/Header.astro";
 import "../style/app.css";
+import Footer from "../components/molecules/Footer.astro";
 const title = "Anro Magazine // Expert en magazine";
 const description = t('meta.description')
 const image = Astro.url.origin + "/share.png";
@@ -48,12 +49,12 @@ const { meta } = Astro.props;
                 />
         </head>
 
-        <body class="flex flex-col min-h-screen  md:overflow-auto">
+        <body class="flex flex-col min-h-screen h-full  md:overflow-auto">
                 <div class="flex-1 w-screen overflow-x-hidden">
                         <Header/>
                         <slot />
                 </div>
-                
+                <Footer/>
                 <script>
                         import "../scripts/app.js";
                 </script>

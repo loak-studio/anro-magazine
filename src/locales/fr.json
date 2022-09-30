@@ -7,5 +7,12 @@
         "homepage":"Accueil",
         "categories":"Catégories",
         "about":"A propos"
+    },
+    "newsletter":{
+        "title":"newsletter",
+        "submit":"S'inscrire"
+    },
+    "footer":{
+        "made-by":"Site internet réalisé par"
     }
 }

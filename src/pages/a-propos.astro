@@ -4,6 +4,7 @@ import Main from "../layouts/Main.astro";
 import i18next, { t, changeLanguage } from "i18next";
 import { localizePath } from "astro-i18next";
 import AboutParagraph from "../components/molecules/AboutParagraph.astro";
+import Anro from "../components/atoms/Anro.astro";
 
 changeLanguage("fr");
 
@@ -11,5 +12,22 @@ const { data } = await getAbout({ lang: i18next.language });
 ---
 
 <Main>
-    {data.attributes.content.map(line=><AboutParagraph title={line.title} content={line.content}/>)}
+    <div class="px-4 lg:px-8">
+        <section class="bg-black text-white flex items-center justify-center py-20 mb-20 px-4">
+            <Anro height="108" width="632"/>
+        </section>
+        {data.attributes.content.map(line=><AboutParagraph title={line.title} content={line.content}/>)}
+        <div class=" max-w-5xl grid grid-cols-4 w-full mx-auto mb-20">
+            <div class=" text-4xl font-mango">
+                Contact
+            </div>
+            <div class="col-span-3 flex">
+                <ul>
+                    <li>
+                        Mail
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </Main>

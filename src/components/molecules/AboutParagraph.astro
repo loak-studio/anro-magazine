@@ -4,10 +4,10 @@ const {title,content} = Astro.props
 ---
 
 <div class=" max-w-5xl grid grid-cols-4 w-full mx-auto mb-20">
-    <div class=" text-4xl">
+    <div class=" text-4xl font-mango">
         {title}
     </div>
-    <div class="col-span-3" set:html={marked.parse(content)}>
+    <div class="col-span-3 font-poppins text-xl" set:html={marked.parse(content)}>
       
     </div>
 </div>

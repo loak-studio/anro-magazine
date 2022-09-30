@@ -2,25 +2,24 @@
 import i18next, { t } from "i18next";
 import { api } from "../../cms/config";
 import { getLastArticle } from "../../cms/get-last-article";
+import { getDateInFrench } from "../../utils/get-date-in-french";
+import Anro from "../atoms/Anro.astro";
 
 const { data } = await getLastArticle({ lang: i18next.language });
 const lastArticle = data[0]
-console.log(lastArticle.attributes)
-const getDateInFrench = (data) => {
-  const date = new Date(data);
-  return date.toLocaleDateString("fr-FR", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-};
-
+console.log(lastArticle)
 ---
-<section>
+<section class=" mb-20">
     <div class="relative">
         <figure class="w-screen px-8 h-[80vh] overflow-hidden">
             <img class="w-full h-full object-cover" src={api + lastArticle.attributes.thumbnail.data.attributes.url} alt="">
         </figure>
+        <div class="text-white absolute right-16 top-4">
+          <Anro/>
+          <span class="font-mango flex flex-col items-end">
+            N°{lastArticle.attributes.numero}
+          </span>
+        </div>
         <div class="absolute left-16 bottom-8 text-white">
             <span class="block text-[80px] font-mango">{lastArticle.attributes.name}</span>
             <h2 class="text-[100px] font-mango">{lastArticle.attributes.title}</h2>

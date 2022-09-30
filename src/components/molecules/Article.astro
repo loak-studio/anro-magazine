@@ -1,0 +1,33 @@
+---
+import i18next, {t} from "i18next";
+import { api } from "../../cms/config";
+import { getDateInFrench } from "../../utils/get-date-in-french";
+const { data, main = false } = Astro.props;
+const { name, title, date } = data.attributes;
+---
+
+<div class={(main ? "col-span-6" : "col-span-4")}>
+    <div class="relative">
+        <figure>
+            <img
+                class="w-full object-cover h-[377px]"
+                src={api + data.attributes.thumbnail.data.attributes.url}
+                alt=""
+            />
+        </figure>
+        <h3
+            class="text-white font-mango break-words text-[53px] absolute right-5 text-right bottom-3"
+        >
+            {name}
+        </h3>
+    </div>
+    <span>{getDateInFrench(data.attributes.date)}</span>
+    <div class="flex flex-wrap gap-3 my-5">
+        {data.attributes.tags.data.map(tag=><span style="box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);" class="px-4 py-2 rounded-full">{tag.attributes.name}</span>)}
+    </div>
+    <div class="relative group">
+        <h4 class=" group-hover:underline font-poppins text-4xl">{data.attributes.title}</h4>
+
+        <a class="before:inset-0 before:absolute" href=""><span class="sr-only">{t('article.read')}</span></a>
+    </div>
+</div>
