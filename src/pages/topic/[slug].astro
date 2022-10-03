@@ -10,7 +10,6 @@ changeLanguage("fr");
 export async function getStaticPaths() {
     const { data } = await getCategories({ lang: i18next.language });
     return data.map((category) => {
-    
         return {
             params: { slug: category.attributes.slug },
             props: { category },
@@ -18,9 +17,7 @@ export async function getStaticPaths() {
     });
 }
 const { category } = Astro.props;
-
 const { data } = await getCategoryArticles({ lang: i18next.language, categoryId: category.id });
-
 ---
 
 <Main>

@@ -1,4 +1,5 @@
 ---
+import Social from "../../data/social.json"
 import i18next, { t } from "i18next";
 import Anro from "../atoms/Anro.astro";
 import Instagram from "../atoms/Instagram.astro";
@@ -10,13 +11,13 @@ import Mail from "../atoms/Mail.astro";
 <footer class="bg-black py-12  mt-10 lg:mt-20 ">
     <div class="max-w-7xl flex-col lg:flex-row flex items-center justify-between space- w-full mx-auto">
         <div class="text-white flex">
-          <a class="p-2 hover:bg-gray-800 transition rounded-md" href="mailto:">
+          <a class="p-2 hover:bg-gray-800 transition rounded-md" href={"mailto:" + Social.mail}>
             <Mail/>
           </a>
-          <a target="_blank" class="p-2 hover:bg-gray-800 transition rounded-md" href="#">
+          <a target="_blank" class="p-2 hover:bg-gray-800 transition rounded-md" href={Social.instagram}>
             <Instagram/>
           </a>
-          <a target="_blank" class="p-2 hover:bg-gray-800 transition rounded-md" href="#">
+          <a target="_blank" class="p-2 hover:bg-gray-800 transition rounded-md" href={Social.linkedin}>
             <LinkedIn/>
           </a>
         </div>

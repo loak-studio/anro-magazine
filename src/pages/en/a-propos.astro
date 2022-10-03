@@ -5,6 +5,10 @@ import i18next, { t, changeLanguage } from "i18next";
 import { localizePath } from "astro-i18next";
 import AboutParagraph from "../../components/molecules/AboutParagraph.astro";
 import Anro from "../../components/atoms/Anro.astro";
+import Mail from "../../components/atoms/Mail.astro";
+import Instagram from "../../components/atoms/Instagram.astro";
+import LinkedIn from "../../components/atoms/LinkedIn.astro";
+import Newsletter from "../../components/molecules/Newsletter.astro";
 
 changeLanguage("en");
 
@@ -17,17 +21,29 @@ const { data } = await getAbout({ lang: i18next.language });
             <Anro height="108" width="632"/>
         </section>
         {data.attributes.content.map(line=><AboutParagraph title={line.title} content={line.content}/>)}
-        <div class=" max-w-5xl grid grid-cols-4 w-full mx-auto mb-12 lg:mb-20">
+        <div class=" max-w-5xl grid lg:grid-cols-4 w-full mx-auto mb-12 lg:mb-20">
             <div class=" text-4xl font-mango">
                 Contact
             </div>
-            <div class="col-span-3 flex">
-                <ul>
+      
+                <ul class="col-span-3 flex">
                     <li>
-                        Mail
+                        <a class="p-2 flex hover:bg-gray-200 rounded-md transition" href="mailto:">
+                            <Mail/>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="p-2 flex hover:bg-gray-200 rounded-md transition" href="mailto:">
+                            <Instagram/>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="p-2 flex hover:bg-gray-200 rounded-md transition" href="mailto:">
+                            <LinkedIn/>
+                        </a>
                     </li>
                 </ul>
-            </div>
         </div>
+        <Newsletter/>
     </div>
 </Main>

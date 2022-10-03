@@ -1,4 +1,6 @@
 ---
+
+import { localizePath } from "astro-i18next";
 import i18next, { t } from "i18next";
 import { api } from "../../cms/config";
 import { getLastArticle } from "../../cms/get-last-article";
@@ -38,7 +40,7 @@ const lastArticle = data[0]
             <span class="block text-[32px] lg:text-[80px] font-mango">{lastArticle.attributes.name}</span>
             <div class="relative group">
               <h2 class=" text-[40px] lg:text-[100px] group-hover:underline font-mango">{lastArticle.attributes.title}</h2>
-              <a class="before:absolute before:inset-0" href="/article/"><span class="sr-only">{t('article.read-more')}</span></a>
+              <a class="before:absolute before:inset-0" href={localizePath('/article/' + lastArticle.attributes.slug)}><span class="sr-only">{t('article.read-more')}</span></a>
             </div>
             <span class="text-xl font-poppins">{getDateInFrench(lastArticle.attributes.date)}</span>
         </div>

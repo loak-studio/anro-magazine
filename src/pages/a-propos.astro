@@ -21,7 +21,7 @@ const { data } = await getAbout({ lang: i18next.language });
             <Anro height="108" width="632"/>
         </section>
         {data.attributes.content.map(line=><AboutParagraph title={line.title} content={line.content}/>)}
-        <div class=" max-w-5xl grid grid-cols-4 w-full mx-auto mb-12 lg:mb-20">
+        <div class=" max-w-5xl grid lg:grid-cols-4 w-full mx-auto mb-12 lg:mb-20">
             <div class=" text-4xl font-mango">
                 Contact
             </div>

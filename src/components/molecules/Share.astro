@@ -17,13 +17,13 @@ const {slug} = Astro.props
             
     </div>
     <div class="flex">
-        <a href="#" class="p-2 hover:bg-gray-200 rounded-md transition">
+        <a target="_blank" href={"https://www.facebook.com/sharer/sharer.php?u=" + Astro.url.href} class="p-2 hover:bg-gray-200 rounded-md transition">
             <Facebook/>
         </a>
-        <a href="#"  class="p-2 hover:bg-gray-200 rounded-md transition">
+        <a target="_blank" href={"https://twitter.com/intent/tweet?text=" + Astro.url.href}  class="p-2 hover:bg-gray-200 rounded-md transition">
             <Twitter/>
         </a>
-        <a href="#"  class="p-2 hover:bg-gray-200 rounded-md transition">
+        <a target="_blank" href="#"  class="p-2 hover:bg-gray-200 rounded-md transition">
             <LinkedIn/>
         </a>
     </div>
