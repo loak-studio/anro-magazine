@@ -1,0 +1,30 @@
+---
+import Facebook from "../atoms/Facebook.astro";
+import LinkedIn from "../atoms/LinkedIn.astro";
+import Twitter from "../atoms/Twitter.astro";
+
+const {slug} = Astro.props
+---
+
+<div class="flex flex-wrap justify-between items-center max-w-4xl w-full mx-auto mt-40">
+    <div class=" font-asset text-4xl">
+        Partager
+    </div>
+    <div class="hidden lg:block">
+        <svg width="279" height="24" viewBox="0 0 279 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M278.061 13.0607C278.646 12.4749 278.646 11.5251 278.061 10.9393L268.515 1.3934C267.929 0.807611 266.979 0.807611 266.393 1.3934C265.808 1.97919 265.808 2.92893 266.393 3.51472L274.879 12L266.393 20.4853C265.808 21.0711 265.808 22.0208 266.393 22.6066C266.979 23.1924 267.929 23.1924 268.515 22.6066L278.061 13.0607ZM0 13.5H277V10.5H0L0 13.5Z" fill="black"/>
+            </svg>
+            
+    </div>
+    <div class="flex">
+        <a href="#" class="p-2 hover:bg-gray-200 rounded-md transition">
+            <Facebook/>
+        </a>
+        <a href="#"  class="p-2 hover:bg-gray-200 rounded-md transition">
+            <Twitter/>
+        </a>
+        <a href="#"  class="p-2 hover:bg-gray-200 rounded-md transition">
+            <LinkedIn/>
+        </a>
+    </div>
+</div>

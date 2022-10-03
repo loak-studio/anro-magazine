@@ -1,6 +1,31 @@
 ---
-import { changeLanguage } from "i18next";
+import i18next, { t, changeLanguage } from "i18next";
+import { getCategories } from "../../cms/get-categories";
+import { getCategoryArticles } from "../../cms/get-category-articles";
+import Article from "../../components/molecules/Article.astro";
+import Main from "../../layouts/Main.astro";
 
 changeLanguage("fr");
+
+export async function getStaticPaths() {
+    const { data } = await getCategories({ lang: i18next.language });
+    return data.map((category) => {
+    
+        return {
+            params: { slug: category.attributes.slug },
+            props: { category },
+        };
+    });
+}
+const { category } = Astro.props;
+
+const { data } = await getCategoryArticles({ lang: i18next.language, categoryId: category.id });
+
 ---
 
+<Main>
+    <h1 class="text-right  max-w-7xl w-full mx-auto font-asset text-[60px] mt-14 mb-8"> {category.attributes.title}</h1>
+    <div class="lg:grid px-4 lg:px-0 max-w-7xl w-full mx-auto flex flex-col grid-cols-14 gap-5">
+    {data.map((article,index)=><Article data={article} main={index%2 == 0}/>)}
+    </div>
+</Main>

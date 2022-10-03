@@ -7,8 +7,6 @@ import Anro from "../atoms/Anro.astro";
 
 const { data } = await getLastArticle({ lang: i18next.language });
 const lastArticle = data[0]
-console.log('ping')
-console.log(lastArticle.attributes)
 ---
 <section class=" mb-12 lg:mb-20">
     <div class="relative">

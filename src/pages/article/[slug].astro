@@ -1,6 +1,53 @@
 ---
-import { changeLanguage } from "i18next";
+import { getArticles } from "../../cms/get-articles";
+import { marked } from "marked";
+import i18next, { t, changeLanguage } from "i18next";
+import Main from "../../layouts/Main.astro";
+import { api } from "../../cms/config";
+import { getDateInFrench } from "../../utils/get-date-in-french";
+import Share from "../../components/molecules/Share.astro";
 
 changeLanguage("fr");
+
+export async function getStaticPaths() {
+    const { data } = await getArticles({ lang: i18next.language });
+    return data.map((article) => {
+        return {
+            params: { slug: article.attributes.slug },
+            props: article,
+        };
+    });
+}
+const article = Astro.props;
+
 ---
 
+<Main>
+    <div class="w-full px-8 gap-10 grid grid-cols-10">
+        <div class="col-span-6 h-full">
+            <figure class="bg-red-500 max-h-[80vh] h-full w-full">
+                <img class="h-full w-full object-cover " src={api + article.attributes.thumbnail.data.attributes.url} alt="">
+            </figure>
+        </div>
+        <div class="relative flex flex-col justify-center col-span-4">
+            <span class=" absolute top-0">{getDateInFrench(article.attributes.date)}</span>
+            <h3 class=" text-4xl font-mango">{article.attributes.name}</h3>
+            <h1 class="font-poppins text-[70px]">{article.attributes.title}</h1>
+            <div class="flex flex-wrap gap-3">
+                {article.attributes.tags.data.map(tag=> <span
+                    style="box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);"
+                    class="px-2 py-1 lg:px-4 text-2xl lg:py-2 rounded-full"
+                >
+                    {tag.attributes.name}
+                </span>)}
+            </div>
+            <div class=" absolute bottom-0">
+                <span>Par Antoine Boucaut</span>
+            </div>
+        </div>
+    </div>
+    <div class=" max-w-4xl w-full mx-auto mt-20 article" set:html={marked.parse(article.attributes.content, {baseUrl:api})}>
+        
+    </div>
+    <Share slug={article.attributes.slug}/>
+</Main> 

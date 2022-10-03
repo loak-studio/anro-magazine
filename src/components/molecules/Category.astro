@@ -31,6 +31,6 @@ const articles = await getCategoryArticles({lang:i18next.language,categoryId:id}
     <div class="lg:grid flex flex-col grid-cols-14 gap-5">
         {articles.data[0]&&<Article data={articles.data[0]} main={index%2 == 0}/>}
         {articles.data[1] && <Article data={articles.data[1]}/>}
-        {articles.data[1] && <Article main={!(index%2 == 0)} data={articles.data[1]}/>}
+        {articles.data[2] && <Article main={!(index%2 == 0)} data={articles.data[2]}/>}
     </div>
 </section>

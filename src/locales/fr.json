@@ -11,7 +11,8 @@
     "newsletter":{
         "title":"newsletter",
         "submit":"S'inscrire",
-        "text":"Soyez au courant des dernières sorties et nouveautés !"
+        "text":"Soyez au courant des dernières sorties et nouveautés !",
+        "email":"Adresse email"
     },
     "footer":{
         "made-by":"Site internet réalisé par"
