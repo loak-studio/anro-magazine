@@ -7,7 +7,7 @@ const { data, main = false } = Astro.props;
 const { name, title, date } = data.attributes;
 ---
 
-<div class={"flex gap-2 lg:block" + " " + (main ? "lg:col-span-6" : "lg:col-span-4")}>
+<div class={"flex relative hover:bg-gray-200 p-2 transition gap-2 lg:block" + " " + (main ? "lg:col-span-6" : "lg:col-span-4")}>
     <div class="relative">
         <figure class="lg:w-full w-[185px] h-[149px] lg:h-[377px]">
             <img
@@ -43,7 +43,7 @@ const { name, title, date } = data.attributes;
                 ))
             }
         </div>
-        <div class="relative order-2 lg:order-none group">
+        <div class="order-2 lg:order-none group">
             <h4 class="group-hover:underline font-poppins text-lg lg:text-4xl">
                 {data.attributes.title}
             </h4>

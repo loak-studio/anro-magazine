@@ -1,14 +1,14 @@
 ---
 import i18next, {t} from "i18next";
 ---
-<section class="flex mt-44 flex-col lg:flex-row items-center overflow-hidden max-w-7xl w-full mx-auto justify-between">
-    <div class="flex items-start w-full lg:w-auto px-2 lg:px-0 flex-col">
+<section class="flex items-start lg:mt-44 gap-4 xl:gap-24 px-2 flex-col xl:flex-row xl:items-center overflow-hidden max-w-7xl w-full mx-auto justify-between">
+    <div class="flex items-start w-full lg:w-auto flex-col">
         <h4 class="font-asset text-lg lg:text-[60px]">{t('newsletter.title')}</h4>
         <p class="font-poppins lg:text-4xl mt-5">{t('newsletter.text')}</p>
     </div>
-    <form action="">
-        <div class="flex rounded-full py-1 px-2" style="box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);">
-            <input type="text" placeholder={t('newsletter.email')}><button class="rounded-full py-1 px-8 text-white bg-black">{t('newsletter.submit')}</button>
-        </div>
+    <form class="flex max-w-lg rounded-full w-full py-1 px-2 border" action="">
+        
+            <input class="w-full" type="text" placeholder={t('newsletter.email')}><button class="rounded-full py-1 px-2 lg:px-8 text-white bg-black">{t('newsletter.submit')}</button>
+    
     </form>
 </section>
