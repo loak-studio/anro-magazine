@@ -3,6 +3,7 @@ import { getCategories } from "../../cms/get-categories";
 import Anro from "../atoms/Anro.astro";
 import i18next, { t } from "i18next";
 import { localizePath } from "astro-i18next";
+import LangPicker from "../atoms/LangPicker.astro";
 const { data } = await getCategories({ lang: i18next.language });
 
 ---
@@ -52,7 +53,7 @@ const { data } = await getCategories({ lang: i18next.language });
                     {
                         data.map((link) => 
                             <li>
-                                <a class="hover:underline text-2xl lg:text-base" href={localizePath('/topic/'+link.attributes.slug )}>
+                                <a class="hover:underline inline-block py-1 lg:py-0 text-2xl lg:text-base" href={localizePath('/topic/'+link.attributes.slug )}>
                                     {link.attributes.title}
                                 </a>
                             </li>
@@ -66,11 +67,6 @@ const { data } = await getCategories({ lang: i18next.language });
         </ul>
     </nav>
     <div class="">
-        <nav>
-            <ul class="flex flex-col lg:flex-row divide-x-2">
-               <li class={"px-2" + " " + (i18next.language == "fr" ? 'font-semibold':'')}> <a href={localizePath(Astro.url.pathname,'fr')}>Français</a></li>
-               <li class={"px-2" + " " + (i18next.language == "en" ? 'font-semibold':'')} > <a href={localizePath(Astro.url.pathname,'en')}>English</a></li>
-            </ul>
-        </nav>
+        <LangPicker currentLang={i18next.language} languages={i18next.languages}/>
     </div>
 </header>

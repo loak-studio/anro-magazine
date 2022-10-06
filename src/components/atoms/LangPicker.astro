@@ -1,0 +1,28 @@
+---
+import { localizePath } from "astro-i18next";
+
+const {currentLang, languages} = Astro.props
+
+let l  = languages
+if(languages[0] != currentLang){
+    l = languages.reverse()
+}
+---
+
+<nav id="lang-picker">
+
+    <ul class="">
+       {languages.map((lang,index)=>
+       <li class={"p-2 capitalize font-semibold " + " " + (index > 0 ? 'absolute hidden not-picked border':'cursor-pointer')}> 
+            {index == 0 && 
+                <button class="flex capitalize items-center ">{lang} <span id="indicator" class="transition inline-block"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <polyline points="6 9 12 15 18 9" />
+            </svg></span></button>}
+            {index >0 && <a href={localizePath(Astro.url.pathname,lang)}>{lang}</a> }
+        </li>
+       )}
+    </ul>
+ 
+
+</nav>
