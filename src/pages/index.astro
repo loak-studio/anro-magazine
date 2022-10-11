@@ -14,5 +14,5 @@ const { data } = await getCategories({ lang: i18next.language });
 <Main>
 	<LastArticle/>
 	{data.map((category,index)=><Category index={index} data={category}/>)}
-	<Newsletter/>
+
 </Main>
