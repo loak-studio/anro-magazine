@@ -10,7 +10,7 @@ const articles = await getCategoryArticles({lang:i18next.language,categoryId:id}
 
 ---
 
-<section class=" max-w-7xl w-full mx-auto mb-12 lg:mb-20 px-2 lg:px-0">
+<section class=" max-w-7xl w-full mx-auto mb-12 lg:mb-20 px-2">
     <div class={"flex mb-8 lg:mb-0 items-center justify-between " + " " +(index%2 == 0 ? 'flex-row':'flex-row-reverse')}>
         <div style="box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);" class="relative gap-6  flex items-center hover:bg-gray-200 transition rounded-full p-2">
             <a href={localizePath('/topic/'+slug)} class="before:absolute font-poppins before:inset-0">Tout voir</a>
