@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 const article = Astro.props;
 ---
 
-<Main>
+<Main meta={{title: 'ANRÓ x ' + article.attributes.name, description:article.attributes.description}}>
     <div class="w-full px-4 lg:px-8 gap-10 grid lg:grid-cols-11">
         <div class="lg:col-span-6 h-full">
             <figure class="min-h-[600px] max-h-[80vh] h-full w-full">
