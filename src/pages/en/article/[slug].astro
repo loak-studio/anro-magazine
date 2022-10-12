@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 const article = Astro.props;
 ---
 
-<Main meta={{title: 'ANRÓ x ' + article.attributes.name, description:article.attributes.description}}>
+<Main meta={{title: 'ANRÓ x ' + article.attributes.name, description:article.attributes.description, image: api + article.attributes.thumbnail.data.attributes.url + "?resize=1200x630"}}>
     <div class="w-full px-4 lg:px-8 gap-10 grid lg:grid-cols-11">
         <div class="lg:col-span-6 h-full">
             <figure class="min-h-[600px] max-h-[80vh] h-full w-full">
@@ -40,8 +40,8 @@ const article = Astro.props;
                     {tag.attributes.name}
                 </span>)}
             </div>
-            <div class="lg:absolute bottom-0 mt-5 lg:mt-0">
-                {article.attributes.credits && <span class="block">{t('post.credits')}: {article.attributes.credits}</span>}
+            <div class=" lg:absolute bottom-0 mt-5 lg:mt-0">
+                {article.attributes.credits && <span class="block">Crédits photos: {article.attributes.credits}</span>}
                 <span>{t('post.by')} {article.attributes.auteur.data.attributes.name}</span>
             </div>
         </div>
