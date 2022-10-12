@@ -15,7 +15,7 @@ changeLanguage("fr");
 const { data } = await getAbout({ lang: i18next.language });
 ---
 
-<Main meta={{title:'A propos // ANRÓ Magazine'}}>
+<Main meta={{title: t('about') + ' // ANRÓ Magazine'}}>
     <div class="px-2 lg:px-8">
         <section class="bg-black text-white flex items-center justify-center py-20 mb-12 lg:mb-20 px-4">
             <Anro height="108" width="632"/>

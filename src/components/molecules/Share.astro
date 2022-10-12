@@ -2,13 +2,13 @@
 import Facebook from "../atoms/Facebook.astro";
 import LinkedIn from "../atoms/LinkedIn.astro";
 import Twitter from "../atoms/Twitter.astro";
-
+import i18next, { t } from "i18next";
 const {slug} = Astro.props
 ---
 
 <div class="flex flex-wrap px-2 lg:px-0 justify-between items-center max-w-4xl w-full mx-auto mt-10 lg:mt-40">
     <div class=" font-asset text-xl lg:text-4xl">
-        Partager
+        {t('share')}
     </div>
     <div class="hidden lg:block">
         <svg width="279" height="24" viewBox="0 0 279 24" fill="none" xmlns="http://www.w3.org/2000/svg">

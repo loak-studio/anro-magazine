@@ -13,7 +13,7 @@ const articles = await getCategoryArticles({lang:i18next.language,categorySlug:d
 <section class=" max-w-7xl w-full mx-auto mb-12 lg:mb-20 px-2">
     <div class={"flex mb-8 lg:mb-0 items-center justify-between " + " " +(index%2 == 0 ? 'flex-row':'flex-row-reverse')}>
         <div style="box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);" class="relative gap-6  flex items-center hover:bg-gray-200 transition rounded-full p-2">
-            <a href={localizePath('/topic/'+slug)} class="before:absolute font-poppins before:inset-0">Tout voir</a>
+            <a href={localizePath('/topic/'+slug)} class="before:absolute font-poppins before:inset-0">{t('category.see-more')}</a>
             <span class="border border-black rounded-full flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-right" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

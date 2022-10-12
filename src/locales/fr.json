@@ -19,5 +19,14 @@
     },
     "article":{
         "read-more":"Lire la suite"
+    },
+    "share":"Partager",
+    "about":"A propos",
+    "post":{
+        "credits":"Crédits photo",
+        "by":"Par"
+    },
+    "category":{
+        "see-more":"Tout voir"
     }
 }
