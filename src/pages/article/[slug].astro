@@ -35,7 +35,7 @@ const article = Astro.props;
             <div class="flex flex-wrap gap-3">
                 {article.attributes.tags.data.map(tag=> <span
                     style="box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);"
-                    class="px-2 py-1 lg:px-4 text-sm lg:text-2xl lg:py-2 rounded-full"
+                    class="px-2 py-1 lg:px-4 text-sm lg:text-base lg:py-2 rounded-full"
                 >
                     {tag.attributes.name}
                 </span>)}
