@@ -47,7 +47,7 @@ const article = Astro.props;
                 </span>)}
             </div>
             <div class=" lg:absolute bottom-0 mt-5 lg:mt-0">
-                {article.attributes.credits && <span class="block">Crédits photos: {article.attributes.credits}</span>}
+                {article.attributes.credits && <span class="block">{t('post.credits')}: {article.attributes.credits}</span>}
                 <span>{t('post.by')} {article.attributes.auteur.data.attributes.name}</span>
             </div>
         </div>
