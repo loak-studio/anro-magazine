@@ -1,6 +1,7 @@
 ---
 import { getArticles } from "../../cms/get-articles";
 import { marked } from "marked";
+const renderer = new marked.Renderer();
 import i18next, { t, changeLanguage } from "i18next";
 import Main from "../../layouts/Main.astro";
 import { api } from "../../cms/config";
@@ -18,6 +19,11 @@ export async function getStaticPaths() {
         };
     });
 }
+renderer.image = (href, title, text) => {
+    return `<img loading="lazy" src="${api+href}?width=1000" alt="${text}"/>`;
+};
+
+
 const article = Astro.props;
 ---
 
@@ -25,7 +31,7 @@ const article = Astro.props;
     <div class="w-full px-4 lg:px-8 gap-10 grid lg:grid-cols-11">
         <div class="lg:col-span-6 h-full">
             <figure class="min-h-[600px] max-h-[80vh] h-full w-full">
-                <img class="h-full w-full object-cover " src={api + article.attributes.thumbnail.data.attributes.url} alt="">
+                <img class="h-full w-full object-cover " src={api + article.attributes.thumbnail.data.attributes.url + "?width=1000"} alt="">
             </figure>
         </div>
         <div class="relative flex flex-col justify-center lg:col-span-5">
@@ -46,7 +52,7 @@ const article = Astro.props;
             </div>
         </div>
     </div>
-    <div class=" max-w-4xl w-full mx-auto mt-10 lg:mt-20 article" set:html={marked.parse(article.attributes.content, {baseUrl:api})}>
+    <div class=" max-w-4xl w-full mx-auto mt-10 lg:mt-20 article" set:html={marked(article.attributes.content, {renderer})}>
         
     </div>
     <Share slug={article.attributes.slug}/>
