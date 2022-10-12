@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 const article = Astro.props;
 ---
 
-<Main meta={{title: 'ANRÓ x ' + article.attributes.name, description:article.attributes.description}}>
+<Main meta={{title: 'ANRÓ x ' + article.attributes.name, description:article.attributes.description, image: api + article.attributes.thumbnail.data.attributes.url + "?resize=1200x630"}}>
     <div class="w-full px-4 lg:px-8 gap-10 grid lg:grid-cols-11">
         <div class="lg:col-span-6 h-full">
             <figure class="min-h-[600px] max-h-[80vh] h-full w-full">
