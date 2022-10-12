@@ -52,8 +52,8 @@ const article = Astro.props;
             </div>
         </div>
     </div>
-    <div class=" max-w-4xl w-full mx-auto mt-10 lg:mt-20 article" set:html={marked(article.attributes.content, {renderer})}>
+    <article class=" max-w-4xl w-full mx-auto mt-10 lg:mt-20 article" set:html={marked(article.attributes.content, {renderer})}>
         
-    </div>
+    </article>
     <Share slug={article.attributes.slug}/>
 </Main> 
