@@ -5,7 +5,6 @@ import i18next, { t } from "i18next";
 import { localizePath } from "astro-i18next";
 import LangPicker from "../atoms/LangPicker.astro";
 const { data } = await getCategories({ lang: i18next.language });
-
 ---
 
 <header class="flex items-center justify-between px-2 lg:px-8 w-full mx-auto my-10">
