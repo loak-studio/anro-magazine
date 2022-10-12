@@ -23,6 +23,6 @@ const { data } = await getCategoryArticles({ lang: i18next.language, categorySlu
 <Main meta={{title:category.attributes.title + " // ANRÓ Magazine"}}>
     <h1 class="text-right  max-w-7xl w-full mx-auto font-asset text-xl lg:text-[60px] px-5 mt-14 mb-8"> {category.attributes.title}</h1>
     <div class="lg:grid max-w-7xl w-full mx-auto flex flex-col grid-cols-14 gap-5">
-    {data.map((article,index)=><Article data={article} main={index%2 == 0}/>)}
+    {data.map((article,index)=><Article data={article} main={index%6 == 0}/>)}
     </div>
 </Main>
