@@ -12,7 +12,7 @@ const { name, title, date } = data.attributes;
         <figure class=" relative lg:w-full w-[185px] h-[149px] lg:h-[377px]">
             <img
                 class="h-full w-full object-cover"
-                src={api + data.attributes.thumbnail.data.attributes.url}
+                src={api + data.attributes.thumbnail.data.attributes.url + "?width=500"}
                 alt=""
             />
             <div class=" absolute inset-0 bg-black opacity-25">
