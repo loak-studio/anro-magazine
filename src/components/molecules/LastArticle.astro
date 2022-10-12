@@ -11,20 +11,21 @@ const { data } = await getLastArticle({ lang: i18next.language });
 const lastArticle = data[0]
 ---
 <section class=" mb-12 lg:mb-20">
-    <div class="relative">
+    <div class="relative group">
+      <a class="before:absolute before:inset-0 before:z-20" href={localizePath('/article/' + lastArticle.attributes.slug)}><span class="sr-only">{t('article.read-more')}</span></a>
         <figure class="w-screen relative px-2 lg:px-8 h-[80vh] overflow-hidden">
-          <div class="absolute inset-y-0  inset-x-2 lg:inset-x-8 opacity-40 bg-black">
+          <div class="absolute inset-y-0  inset-x-2 lg:inset-x-8 group-hover:opacity-25 transition opacity-40 bg-black">
 
           </div>
             <picture class="w-full h-full">
               <source
               class="w-full h-full object-cover"
-              srcset={api + lastArticle.attributes.thumbnail.data.attributes.url}
+              srcset={api + lastArticle.attributes.thumbnail.data.attributes.url + "?width=1920"}
               media="(min-width: 1000px)"
             />
             <source
             class="w-full h-full object-cover"
-            srcset={api + lastArticle.attributes.mobile_thumbnail.data.attributes.url}
+            srcset={api + lastArticle.attributes.mobile_thumbnail.data.attributes.url + "?width=1000"}
             media="(max-width: 999px)"
           />
           <img
@@ -40,10 +41,10 @@ const lastArticle = data[0]
           </span>
         </div>
         <div class="absolute left-4 bottom-4 lg:left-16 lg:bottom-8 text-white">
-            <span class="block text-[32px] lg:text-[80px] font-mango">{lastArticle.attributes.name}</span>
+            <span class="block text-[32px] lg:text-[60px] font-mango">{lastArticle.attributes.name}</span>
             <div class="relative group">
-              <h2 class=" text-[40px] lg:text-[100px] group-hover:underline font-mango">{lastArticle.attributes.title}</h2>
-              <a class="before:absolute before:inset-0" href={localizePath('/article/' + lastArticle.attributes.slug)}><span class="sr-only">{t('article.read-more')}</span></a>
+              <h2 class=" text-[40px] lg:text-[70px] font-mango">{lastArticle.attributes.title}</h2>
+              
             </div>
             <span class="text-xl font-poppins">{getDateInFrench(lastArticle.attributes.date)}</span>
         </div>
