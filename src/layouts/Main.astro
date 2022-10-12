@@ -23,7 +23,9 @@ const { meta } = Astro.props;
                         }
                 </title>
                 <HeadHrefLangs />
-                <meta name="title" content={title} />
+                <meta name="title" content={   meta && meta.title
+                        ? meta.title 
+                        : title} />
                 <meta name="description" content={meta && meta.description ? meta.description : description} />
 
                 <meta property="og:type" content="website" />
