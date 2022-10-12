@@ -6,7 +6,7 @@ import Article from "./Article.astro";
 const {data,index}= Astro.props
 const {title,slug} = data.attributes
 const {id} = data
-const articles = await getCategoryArticles({lang:i18next.language,categoryId:id})
+const articles = await getCategoryArticles({lang:i18next.language,categorySlug:data.attributes.slug})
 
 ---
 
