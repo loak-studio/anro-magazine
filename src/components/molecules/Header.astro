@@ -26,7 +26,7 @@ const { data } = await getCategories({ lang: i18next.language });
                 <a class="text-2xl lg:text-base hover:underline" href={localizePath('/')}>{t("navigation.homepage")}</a>
             </li>
             <li class="relative">
-                <button id="hamburger-button" class="flex hover:underline items-center">
+                <button id="hamburger-button" class="flex peer hover:underline items-center">
                     <span class="text-2xl lg:text-base">{t("navigation.categories")}</span>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +47,7 @@ const { data } = await getCategories({ lang: i18next.language });
                 </button>
                 <ul
                     id="dropdown"
-                    class="bg-white w-full lg:shadow-md lg:border z-20 lg:border-black p-2 lg:hidden mt-2 lg:opacity-0 transition lg:absolute lg:left-1/2 lg:-translate-x-1/2"
+                    class="bg-white transition-opacity hover:opacity-100 lg:-translate-y-[100vh] peer-hover:translate-y-0 hover:translate-y-0  peer-hover:opacity-100 w-full lg:shadow-md lg:border z-20 lg:border-black p-2 lg:opacity-0 lg:absolute lg:left-1/2 lg:-translate-x-1/2"
                 >
                     {
                         data.map((link) => 
