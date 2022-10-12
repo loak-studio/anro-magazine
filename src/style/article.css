@@ -12,3 +12,6 @@
 .article{
     @apply px-4 lg:px-0;
 }
+.article p{
+    @apply my-4;
+}
