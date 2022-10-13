@@ -1,14 +1,13 @@
 ---
+import Social from "../data/social.json";
 import { getAbout } from "../cms/get-about";
 import Main from "../layouts/Main.astro";
 import i18next, { t, changeLanguage } from "i18next";
-import { localizePath } from "astro-i18next";
 import AboutParagraph from "../components/molecules/AboutParagraph.astro";
 import Anro from "../components/atoms/Anro.astro";
 import Mail from "../components/atoms/Mail.astro";
 import Instagram from "../components/atoms/Instagram.astro";
 import LinkedIn from "../components/atoms/LinkedIn.astro";
-import Newsletter from "../components/molecules/Newsletter.astro";
 
 changeLanguage("fr");
 
@@ -28,17 +27,17 @@ const { data } = await getAbout({ lang: i18next.language });
       
                 <ul class="col-span-3 flex">
                     <li>
-                        <a class="p-2 flex hover:bg-gray-200 rounded-md transition" href="mailto:">
+                        <a class="p-2 flex hover:bg-gray-200 rounded-md transition" href={"mailto:" + Social.mail}>
                             <Mail/>
                         </a>
                     </li>
                     <li>
-                        <a class="p-2 flex hover:bg-gray-200 rounded-md transition" href="https://www.instagram.com/anro.magazine/">
+                        <a class="p-2 flex hover:bg-gray-200 rounded-md transition" href={Social.instagram}>
                             <Instagram/>
                         </a>
                     </li>
                     <li>
-                        <a class="p-2 flex hover:bg-gray-200 rounded-md transition" href="https://www.linkedin.com/company/anr%C3%B3-magazine/">
+                        <a class="p-2 flex hover:bg-gray-200 rounded-md transition" href={Social.linkedin}>
                             <LinkedIn/>
                         </a>
                     </li>
