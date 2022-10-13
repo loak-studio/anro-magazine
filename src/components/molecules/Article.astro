@@ -7,7 +7,7 @@ const { data, main = false } = Astro.props;
 const { name, title, date } = data.attributes;
 ---
 
-<div class={"flex relative hover:bg-gray-200 p-2 transition gap-2 lg:block" + " " + (main ? "lg:col-span-6" : "lg:col-span-4")}>
+<div class={"flex  focus-within:outline-dashed focus-within:outline-2  focus-within:outline-offset-2 relative hover:bg-gray-200 p-2 transition gap-2 lg:block" + " " + (main ? "lg:col-span-6" : "lg:col-span-4")}>
     <div class="relative">
         <figure class=" relative lg:w-full w-[185px] h-[149px] lg:h-[377px]">
             <img

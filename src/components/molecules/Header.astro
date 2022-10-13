@@ -47,7 +47,7 @@ const { data } = await getCategories({ lang: i18next.language });
                 </button>
                 <ul
                     id="dropdown"
-                    class="bg-white transition-opacity  hover:opacity-100 lg:-translate-y-[100vh] peer-hover:translate-y-0 hover:translate-y-0  peer-hover:opacity-100 w-full lg:shadow-md lg:border lg:border-black p-2 lg:opacity-0 lg:absolute lg:left-1/2 lg:-translate-x-1/2"
+                    class="bg-white transition-opacity focus-within:translate-y-0 focus-within:opacity-100  hover:opacity-100 lg:-translate-y-[100vh] peer-hover:translate-y-0 hover:translate-y-0  peer-hover:opacity-100 w-full lg:shadow-md lg:border lg:border-black p-2 lg:opacity-0 lg:absolute lg:left-1/2 lg:-translate-x-1/2"
                 >
                     {
                         data.map((link) => 
