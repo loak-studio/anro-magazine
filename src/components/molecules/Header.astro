@@ -7,8 +7,8 @@ import LangPicker from "../atoms/LangPicker.astro";
 const { data } = await getCategories({ lang: i18next.language });
 ---
 
-<header class="flex items-center justify-between px-2 lg:px-8 w-full mx-auto my-10">
-    <div class="lg:hidden z-30">
+<header class="flex items-baseline justify-between lg:px-8 w-full mx-auto my-2.5 lg:my-10">
+    <div class="lg:hidden z-30 scale-50">
         <button id="toggle-nav" class="hamburger hamburger--arrow " type="button">
             <span class="hamburger-box">
               <span class="hamburger-inner"></span>
@@ -20,7 +20,7 @@ const { data } = await getCategories({ lang: i18next.language });
        <span class="lg:hidden"> <Anro width="161" height="27"/></span>
        <span class="hidden lg:block"> <Anro /></span>
     </a>
-    <nav id="main-nav" class="font-poppins h-screen font-medium w-screen fixed lg:h-auto px-4 lg:px-0 lg:w-auto transition top-0 z-20 bg-white left-0 -translate-x-[500vw] lg:translate-x-0 lg:static">
+    <nav id="main-nav" class="font-poppins -translate-y-2 h-screen font-medium w-screen fixed lg:h-auto px-4 lg:px-0 lg:w-auto transition top-0 z-20 bg-white left-0 -translate-x-[500vw] lg:translate-x-0 lg:static">
         <ul class="flex flex-col lg:flex-row h-full lg:h-auto gap-4 lg:gap-16 justify-center lg:items-center">
             <li>
                 <a class="text-2xl lg:text-base hover:underline" href={localizePath('/')}>{t("navigation.homepage")}</a>
@@ -47,7 +47,7 @@ const { data } = await getCategories({ lang: i18next.language });
                 </button>
                 <ul
                     id="dropdown"
-                    class="bg-white transition-opacity hover:opacity-100 lg:-translate-y-[100vh] peer-hover:translate-y-0 hover:translate-y-0  peer-hover:opacity-100 w-full lg:shadow-md lg:border z-20 lg:border-black p-2 lg:opacity-0 lg:absolute lg:left-1/2 lg:-translate-x-1/2"
+                    class="bg-white transition-opacity  hover:opacity-100 lg:-translate-y-[100vh] peer-hover:translate-y-0 hover:translate-y-0  peer-hover:opacity-100 w-full lg:shadow-md lg:border lg:border-black p-2 lg:opacity-0 lg:absolute lg:left-1/2 lg:-translate-x-1/2"
                 >
                     {
                         data.map((link) => 

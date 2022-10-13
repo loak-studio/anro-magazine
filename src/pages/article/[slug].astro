@@ -20,10 +20,8 @@ export async function getStaticPaths() {
     });
 }
 renderer.image = (href, title, text) => {
-    return `<img loading="lazy" src="${api+href}?width=1000" alt="${text}"/>`;
+    return `<img loading="lazy" src="${api + href}?width=1000" alt="${text}"/>`;
 };
-
-
 const article = Astro.props;
 ---
 
@@ -35,7 +33,7 @@ const article = Astro.props;
             </figure>
         </div>
         <div class="relative flex flex-col justify-center lg:col-span-5">
-            <span class=" lg:absolute top-0">{getDateInFrench(article.attributes.date)}</span>
+            <span class=" lg:absolute top-0">{getDateInFrench(article.attributes.date, i18next.language)}</span>
             <h3 class=" text-lg lg:text-4xl font-mango mt-2.5 lg:mt-0">{article.attributes.name}</h3>
             <h1 class="font-poppins my-5 lg:my-5 text-2xl sm:text-[40px] 2xl:text-[70px] sm:leading-normal 2xl:leading-[105px]">{article.attributes.title}</h1>
             <div class="flex flex-wrap gap-3">
@@ -47,7 +45,7 @@ const article = Astro.props;
                 </span>)}
             </div>
             <div class=" lg:absolute bottom-0 mt-5 lg:mt-0">
-                {article.attributes.credits && <span class="block">{t('post.credits')}: {article.attributes.credits}</span>}
+                {article.attributes.credits && <span class="block">{t('post.credits')} : {article.attributes.credits}</span>}
                 <span>{t('post.by')} {article.attributes.auteur.data.attributes.name}</span>
             </div>
         </div>
