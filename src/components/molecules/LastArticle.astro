@@ -46,7 +46,7 @@ const lastArticle = data[0]
               <h2 class=" text-[40px] lg:text-[70px] font-mango">{lastArticle.attributes.title}</h2>
               
             </div>
-            <span class="text-xl font-poppins">{getDateInFrench(lastArticle.attributes.date)}</span>
+            <span class="text-xl font-poppins">{getDateInFrench(lastArticle.attributes.date,i18next.language)}</span>
         </div>
     </div>
 </section>

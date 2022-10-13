@@ -16,7 +16,6 @@ export async function getStaticPaths() {
         };
     });
 }
-
 function sliceIntoChunks(arr, chunkSize) {
     const res = [];
     for (let i = 0; i < arr.length; i += chunkSize) {
@@ -25,11 +24,9 @@ function sliceIntoChunks(arr, chunkSize) {
     }
     return res;
 }
-
 const { category } = Astro.props;
 const { data } = await getCategoryArticles({ lang: i18next.language, categorySlug: category.attributes.slug });
-
-const dataChunks = sliceIntoChunks(data,6)
+const dataChunks = sliceIntoChunks(data, 6);
 ---
 
 <Main meta={{title:category.attributes.title + " // ANRÓ Magazine"}}>

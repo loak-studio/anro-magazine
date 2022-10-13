@@ -32,7 +32,7 @@ const { name, title, date } = data.attributes;
             
         </h3>
         <span class=" block font-poppins order-3 lg:order-none text-xs lg:text-lg"
-            >{getDateInFrench(data.attributes.date)} 
+            >{getDateInFrench(data.attributes.date, i18next.language)} 
         </span>
         <div class="flex order-1 lg:order-none flex-wrap gap-3">
             {
