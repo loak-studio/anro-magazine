@@ -7,8 +7,8 @@ import LangPicker from "../atoms/LangPicker.astro";
 const { data } = await getCategories({ lang: i18next.language });
 ---
 
-<header class="flex items-baseline justify-between lg:px-8 w-full mx-auto my-2.5 lg:my-10">
-    <div class="lg:hidden z-30 scale-50">
+<header class="flex mb-2.5 lg:items-baseline justify-center lg:justify-between lg:px-8 w-full mx-auto py-2.5 lg:my-10">
+    <div class="lg:hidden left-0 top-0 absolute z-30 scale-50">
         <button id="toggle-nav" class="hamburger hamburger--arrow " type="button">
             <span class="hamburger-box">
               <span class="hamburger-inner"></span>
@@ -65,7 +65,7 @@ const { data } = await getCategories({ lang: i18next.language });
             </li>
         </ul>
     </nav>
-    <div class="">
+    <div class="absolute right-0 top-4  lg:static">
         <LangPicker currentLang={i18next.language} languages={i18next.languages}/>
     </div>
 </header>
