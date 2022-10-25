@@ -7,5 +7,5 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   site:"https://anro-magazine.com",
-  integrations: [compress(), sitemap(), tailwind(),astroI18next()]
+  integrations: [sitemap(), tailwind(),astroI18next()]
 });
