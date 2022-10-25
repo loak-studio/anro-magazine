@@ -7,6 +7,7 @@ import Main from "../../layouts/Main.astro";
 import { api } from "../../cms/config";
 import { getDateInFrench } from "../../utils/get-date-in-french";
 import Share from "../../components/molecules/Share.astro";
+import Breadcrumb from "../../components/molecules/Breadcrumb.astro";
 
 changeLanguage("fr");
 
@@ -26,6 +27,16 @@ const article = Astro.props;
 ---
 
 <Main meta={{title: 'ANRÓ x ' + article.attributes.name, description:article.attributes.description, image: api + article.attributes.thumbnail.data.attributes.url + "?resize=1200x630"}}>
+    <Breadcrumb items={[
+        {
+            label:article.attributes.categories.data[0].attributes.title,
+            href:'/topic/' + article.attributes.categories.data[0].attributes.slug
+        },
+        {
+            label:article.attributes.title,
+            href:article.attributes.slug
+        },
+    ]}/>
     <div class="w-full px-4 lg:px-8 gap-10 grid lg:grid-cols-11">
         <div class="lg:col-span-6 h-full">
             <figure class="min-h-[600px] max-h-[80vh] h-full w-full">
@@ -50,6 +61,7 @@ const article = Astro.props;
             </div>
         </div>
     </div>
+
     <article class=" max-w-4xl w-full mx-auto mt-10 lg:mt-20 article" set:html={marked(article.attributes.content, {renderer})}>
         
     </article>
