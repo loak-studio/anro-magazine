@@ -34,7 +34,7 @@ const article = Astro.props;
         },
         {
             label:article.attributes.title,
-            href:article.attributes.slug
+            href:"/article/" + article.attributes.slug
         },
     ]}/>
     <div class="w-full px-4 lg:px-8 gap-10 grid lg:grid-cols-11">
