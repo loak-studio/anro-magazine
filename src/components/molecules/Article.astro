@@ -11,22 +11,32 @@ const { name, title, date } = data.attributes;
     <div class="relative">
         <figure class=" relative lg:w-full w-[185px] h-[149px] lg:h-[377px]">
             <picture>
-                <source width="500" height="500" srcset={api + data.attributes.thumbnail.data.attributes.url + "?width=500&format=webp"} type="image/webp" 
+                <source
+                
+              onload="this.style.opacity=1"
+                class="w-full h-full object-cover transition opacity-0"
+                width="500" height="500" srcset={api + data.attributes.thumbnail.data.attributes.url + "?width=500&format=webp"} type="image/webp" 
                 media="(min-width: 1000px)">
                 <source
-                class="w-full h-full object-cover"
+
+              onload="this.style.opacity=1"
+                class="w-full h-full object-cover transition opacity-0"
                 srcset={api + data.attributes.thumbnail.data.attributes.url + "?width=185&format=webp"}
                 type="image/webp"
                 media="(max-width: 1000px)"
               />
                 <source
-                class="w-full h-full object-cover"
+
+              onload="this.style.opacity=1"
+                class="w-full h-full object-cover transition opacity-0"
                 srcset={api + data.attributes.thumbnail.data.attributes.url + "?width=185"}
                 media="(max-width: 1000px)"
               />
                 <img
+
+              onload="this.style.opacity=1"
                 loading="lazy"
-                class="h-full w-full object-cover"
+                class="h-full w-full object-cover transition opacity-0"
                 src={api + data.attributes.thumbnail.data.attributes.url + "?width=500"}
                 alt=""
             />
