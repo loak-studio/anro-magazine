@@ -18,11 +18,24 @@ const lastArticle = data[0]
 
           </div>
             <picture class="w-full h-full">
+
+              <source
+              class="w-full h-full object-cover"
+              srcset={api + lastArticle.attributes.thumbnail.data.attributes.url + "?width=1920&format=webp"}
+              type="image/webp"
+              media="(min-width: 1000px)"
+            />
               <source
               class="w-full h-full object-cover"
               srcset={api + lastArticle.attributes.thumbnail.data.attributes.url + "?width=1920"}
               media="(min-width: 1000px)"
             />
+            <source
+            class="w-full h-full object-cover"
+            srcset={api + lastArticle.attributes.mobile_thumbnail.data.attributes.url + "?width=1000&format=webp"}
+            type="image/webp"
+            media="(max-width: 999px)"
+          />
             <source
             class="w-full h-full object-cover"
             srcset={api + lastArticle.attributes.mobile_thumbnail.data.attributes.url + "?width=1000"}

@@ -10,11 +10,15 @@ const { name, title, date } = data.attributes;
 <div class={"flex  relative hover:bg-gray-200 p-2 transition gap-2 lg:block" + " " + (main ? "lg:col-span-6" : "lg:col-span-4")}>
     <div class="relative">
         <figure class=" relative lg:w-full w-[185px] h-[149px] lg:h-[377px]">
-            <img
+            <picture>
+                <source width="500" height="500" srcset={api + data.attributes.thumbnail.data.attributes.url + "?width=500&format=webp"} type="image/webp">
+                <img
+                loading="lazy"
                 class="h-full w-full object-cover"
                 src={api + data.attributes.thumbnail.data.attributes.url + "?width=500"}
                 alt=""
             />
+            </picture>
             <div class=" absolute inset-0 bg-black opacity-25">
 
             </div>
