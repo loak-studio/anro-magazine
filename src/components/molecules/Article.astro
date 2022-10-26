@@ -11,7 +11,19 @@ const { name, title, date } = data.attributes;
     <div class="relative">
         <figure class=" relative lg:w-full w-[185px] h-[149px] lg:h-[377px]">
             <picture>
-                <source width="500" height="500" srcset={api + data.attributes.thumbnail.data.attributes.url + "?width=500&format=webp"} type="image/webp">
+                <source width="500" height="500" srcset={api + data.attributes.thumbnail.data.attributes.url + "?width=500&format=webp"} type="image/webp" 
+                media="(min-width: 1000px)">
+                <source
+                class="w-full h-full object-cover"
+                srcset={api + data.attributes.thumbnail.data.attributes.url + "?width=185&format=webp"}
+                type="image/webp"
+                media="(max-width: 1000px)"
+              />
+                <source
+                class="w-full h-full object-cover"
+                srcset={api + data.attributes.thumbnail.data.attributes.url + "?width=185"}
+                media="(max-width: 1000px)"
+              />
                 <img
                 loading="lazy"
                 class="h-full w-full object-cover"
