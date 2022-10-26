@@ -20,7 +20,7 @@ const { data } = await getCategories({ lang: i18next.language });
        <span class="lg:hidden"> <Anro width="161" height="27"/></span>
        <span class="hidden lg:block"> <Anro /></span>
     </a>
-    <nav id="main-nav" class="font-poppins lg:-translate-y-2 h-screen font-medium w-screen fixed lg:h-auto px-4 lg:px-0 lg:w-auto transition top-0 z-20 bg-white left-0 -translate-x-[500vw] lg:translate-x-0 lg:static">
+    <nav id="main-nav" class="font-poppins lg:-translate-y-2  lg:transition-none h-screen font-medium w-screen fixed lg:h-auto px-4 lg:px-0 lg:w-auto transition top-0 z-20 bg-white left-0 -translate-x-[500vw] lg:translate-x-0 lg:static">
         <ul class="flex flex-col lg:flex-row h-full lg:h-auto gap-4 lg:gap-16 justify-center lg:items-center">
             <li>
                 <a class="text-2xl lg:text-base hover:underline" href={localizePath('/')}>{t("navigation.homepage")}</a>
