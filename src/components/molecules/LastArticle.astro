@@ -9,6 +9,7 @@ import Anro from "../atoms/Anro.astro";
 
 const { data } = await getLastArticle({ lang: i18next.language });
 const lastArticle = data[0]
+console.log(lastArticle.attributes.thumbnail.data.attributes)
 ---
 <section class=" mb-12 lg:mb-20">
     <div class="relative z-0 group">
@@ -54,7 +55,7 @@ const lastArticle = data[0]
         </picture>
         </figure>
         <div class="text-white absolute right-4 lg:right-16 top-4">
-          <span class="hidden lg:block"><Anro/></span>
+          <span class="hidden lg:block font-asset text-6xl">anró</span>
           <span class="font-mango flex flex-col items-end">
             N°{lastArticle.attributes.numero}
           </span>
