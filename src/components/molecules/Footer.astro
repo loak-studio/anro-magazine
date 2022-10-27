@@ -1,7 +1,7 @@
 ---
 import Social from "../../data/social.json"
 import i18next, { t } from "i18next";
-import Anro from "../atoms/Anro.astro";
+import { localizePath } from "astro-i18next";
 import Instagram from "../atoms/Instagram.astro";
 import LinkedIn from "../atoms/LinkedIn.astro";
 import Mail from "../atoms/Mail.astro";
@@ -21,6 +21,7 @@ import Mail from "../atoms/Mail.astro";
             <LinkedIn/>
           </a>
         </div>
+        <a href={localizePath('/mentions-legales/')} class="text-white hover:underline">{t('legal')}</a>
         <span class="flex text-white items-center gap-1">
             {t('footer.made-by')} <a
               class="text-gray-400 underline hover:no-underline flex items-center"

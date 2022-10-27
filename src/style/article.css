@@ -15,3 +15,6 @@
 .article p{
     @apply my-4;
 }
+.article ul li{
+    @apply before:content-['-'] before:mr-1;
+}

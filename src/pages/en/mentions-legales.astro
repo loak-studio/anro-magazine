@@ -1,0 +1,17 @@
+---
+import { marked } from "marked";
+import i18next, { t, changeLanguage } from "i18next";
+import { getLegal } from "../../cms/get-legal";
+import Main from "../../layouts/Main.astro";
+
+changeLanguage("en");
+
+const { data } = await getLegal({ lang: i18next.language });
+---
+
+<Main>
+    <h1 class=" text-center text-4xl">{t('legal')}</h1>
+    <article class="article max-w-4xl w-full mx-auto" set:html={marked.parse(data.attributes.content)}>
+
+    </article>
+</Main>
