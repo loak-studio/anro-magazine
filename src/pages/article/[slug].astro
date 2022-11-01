@@ -1,5 +1,5 @@
 ---
-import { getArticles } from "../../cms/get-articles";
+import { getArticleBySlug } from "../../cms/get-article-by-slug";
 import { marked } from "marked";
 const renderer = new marked.Renderer();
 import i18next, { t, changeLanguage } from "i18next";
@@ -11,19 +11,22 @@ import Breadcrumb from "../../components/molecules/Breadcrumb.astro";
 
 changeLanguage("fr");
 
-export async function getStaticPaths() {
-    const { data } = await getArticles({ lang: i18next.language });
-    return data.map((article) => {
-        return {
-            params: { slug: article.attributes.slug },
-            props: article,
-        };
-    });
-}
+const { slug } = Astro.params;
+const { data } = await getArticleBySlug({ lang: i18next.language, slug });
+// export async function getStaticPaths() {
+//     const { data } = await getArticles({ lang: i18next.language });
+//     return data.map((article) => {
+//         return {
+//             params: { slug: article.attributes.slug },
+//             props: article,
+//         };
+//     });
+// }
 renderer.image = (href, title, text) => {
     return `<img loading="lazy" src="${api + href}?width=1000" alt="${text}"/>`;
 };
-const article = Astro.props;
+// const article = Astro.props;
+const article = data[0];
 ---
 
 <Main meta={{title: 'ANRÓ x ' + article.attributes.name, description:article.attributes.description, image: api + article.attributes.thumbnail.data.attributes.url + "?resize=1200x630"}}>

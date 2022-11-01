@@ -9,9 +9,10 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "translate":"npx astro-i18next generate"
+    "translate": "npx astro-i18next generate"
   },
   "dependencies": {
+    "@astrojs/node": "^2.0.2",
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^2.0.1",
     "astro": "^1.4.2",

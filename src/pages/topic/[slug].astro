@@ -1,6 +1,6 @@
 ---
 import i18next, { t, changeLanguage } from "i18next";
-import { getCategories } from "../../cms/get-categories";
+import { getCategoryBySlug } from "../../cms/get-category-by-slug";
 import { getCategoryArticles } from "../../cms/get-category-articles";
 import Article from "../../components/molecules/Article.astro";
 import Breadcrumb from "../../components/molecules/Breadcrumb.astro";
@@ -8,15 +8,17 @@ import Main from "../../layouts/Main.astro";
 
 changeLanguage("fr");
 
-export async function getStaticPaths() {
-    const { data } = await getCategories({ lang: i18next.language });
-    return data.map((category) => {
-        return {
-            params: { slug: category.attributes.slug },
-            props: { category },
-        };
-    });
-}
+const { slug } = Astro.params;
+const categoryRequest = await getCategoryBySlug({ lang: i18next.language, slug });
+// export async function getStaticPaths() {
+//     const { data } = await getCategories({ lang: i18next.language });
+//     return data.map((category) => {
+//         return {
+//             params: { slug: category.attributes.slug },
+//             props: { category },
+//         };
+//     });
+// }
 function sliceIntoChunks(arr, chunkSize) {
     const res = [];
     for (let i = 0; i < arr.length; i += chunkSize) {
@@ -25,7 +27,8 @@ function sliceIntoChunks(arr, chunkSize) {
     }
     return res;
 }
-const { category } = Astro.props;
+// const { category } = Astro.props;
+const category = categoryRequest.data[0];
 const { data } = await getCategoryArticles({ lang: i18next.language, categorySlug: category.attributes.slug });
 const dataChunks = sliceIntoChunks(data, 6);
 ---
