@@ -1,15 +1,27 @@
 ---
-
 import { localizePath } from "astro-i18next";
-const {items = []} = Astro.props
+const { items = [] } = Astro.props;
 ---
+
 <div class="text-gray-500 px-4 lg:px-8 my-6 lg:my-4">
-    <ul class="flex">
-        <li class="after:inline-block hover:underline after:mx-2 after:content-['•']">
-            <a href={localizePath('/')}>ANRÓ Magazine</a>
+  <ul class="flex">
+    <li
+      class="after:inline-block hover:underline after:mx-2 after:content-['•']"
+    >
+      <a href={localizePath("/")}>ANRÓ Magazine</a>
+    </li>
+    {
+      items.map((item, index) => (
+        <li
+          class={
+            index < items.length - 1
+              ? "hover:underline after:inline-block after:mx-2 lg:after:content-['•']"
+              : "hidden lg:block text-black"
+          }
+        >
+          <a href={localizePath(item.href)}>{item.label}</a>
         </li>
-        {items.map((item,index)=><li class={index < items.length-1 ? "hover:underline after:inline-block after:mx-2 lg:after:content-['•']" : 'hidden lg:block text-black'}>
-                <a href={localizePath(item.href)}>{item.label}</a>
-            </li>)}
-    </ul>
+      ))
+    }
+  </ul>
 </div>

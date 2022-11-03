@@ -1,1 +1,1 @@
-export const api = import.meta.env.STRAPI
+export const api = import.meta.env.STRAPI;

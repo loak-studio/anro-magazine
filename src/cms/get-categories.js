@@ -1,5 +1,8 @@
-import {api} from "./config"
+import { api } from "./config";
 
-const getCategories = async({lang}) => await (await fetch(api + '/api/categories?sort=title:asc&locale='+lang)).json()
+const getCategories = async ({ lang }) =>
+  await (
+    await fetch(api + "/api/categories?sort=title:asc&locale=" + lang)
+  ).json();
 
-export {getCategories}
+export { getCategories };

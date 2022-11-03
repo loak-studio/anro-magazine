@@ -1,34 +1,34 @@
 {
-    "meta":{
-        "description":"ANRÓ est un magazine digital dédié aux personnes inspirantes, peu importe leur domaine. Créé au départ comme un simple magazine fictif pour s'améliorer en graphisme, ANRÓ devient, jour après jour, un vrai magazine digital."
-    },
-    "navigation":{
-        "back-to-home":"Retour à l'accueil",
-        "homepage":"Accueil",
-        "categories":"Catégories",
-        "about":"A propos"
-    },
-    "newsletter":{
-        "title":"newsletter",
-        "submit":"S'inscrire",
-        "text":"Soyez au courant des dernières sorties et nouveautés !",
-        "email":"Adresse email"
-    },
-    "footer":{
-        "made-by":"Site internet réalisé par"
-    },
-    "article":{
-        "read-more":"Lire la suite"
-    },
-    "share":"Partager",
-    "about":"A propos",
-    "post":{
-        "credits":"Crédits photo",
-        "by":"Par"
-    },
-    "category":{
-        "see-more":"Tout voir"
-    },
-    "back-to-top":"Vers le haut de la page",
-    "legal":"Mentions légales"
+  "meta": {
+    "description": "ANRÓ est un magazine digital dédié aux personnes inspirantes, peu importe leur domaine. Créé au départ comme un simple magazine fictif pour s'améliorer en graphisme, ANRÓ devient, jour après jour, un vrai magazine digital."
+  },
+  "navigation": {
+    "back-to-home": "Retour à l'accueil",
+    "homepage": "Accueil",
+    "categories": "Catégories",
+    "about": "A propos"
+  },
+  "newsletter": {
+    "title": "newsletter",
+    "submit": "S'inscrire",
+    "text": "Soyez au courant des dernières sorties et nouveautés !",
+    "email": "Adresse email"
+  },
+  "footer": {
+    "made-by": "Site internet réalisé par"
+  },
+  "article": {
+    "read-more": "Lire la suite"
+  },
+  "share": "Partager",
+  "about": "A propos",
+  "post": {
+    "credits": "Crédits photo",
+    "by": "Par"
+  },
+  "category": {
+    "see-more": "Tout voir"
+  },
+  "back-to-top": "Vers le haut de la page",
+  "legal": "Mentions légales"
 }

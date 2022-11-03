@@ -1,7 +1,6 @@
 ---
 import { getArticles } from "../../../cms/get-articles";
 import { marked } from "marked";
-const renderer = new marked.Renderer();
 import i18next, { t, changeLanguage } from "i18next";
 import Main from "../../../layouts/Main.astro";
 import { api } from "../../../cms/config";
@@ -12,61 +11,100 @@ import Breadcrumb from "../../../components/molecules/Breadcrumb.astro";
 changeLanguage("en");
 
 export async function getStaticPaths() {
-    const { data } = await getArticles({ lang: i18next.language });
-    return data.map((article) => {
-        return {
-            params: { slug: article.attributes.slug },
-            props: article,
-        };
-    });
+  const { data } = await getArticles({ lang: i18next.language });
+  return data.map((article) => {
+    return {
+      params: { slug: article.attributes.slug },
+      props: article,
+    };
+  });
 }
+const renderer = new marked.Renderer();
 renderer.image = (href, title, text) => {
-    return `<img loading="lazy" src="${api + href}?width=1000" alt="${text}"/>`;
+  return `<img loading="lazy" src="${api + href}?width=1000" alt="${text}"/>`;
 };
 const article = Astro.props;
 ---
 
-<Main meta={{title: 'ANRÓ x ' + article.attributes.name, description:article.attributes.description, image: api + article.attributes.thumbnail.data.attributes.url + "?resize=1200x630"}}>
-    <Breadcrumb items={[
-        {
-            label:article.attributes.categories.data[0].attributes.title,
-            href:'/topic/' + article.attributes.categories.data[0].attributes.slug
-        },
-        {
-            label:article.attributes.title,
-            href:"/article/" + article.attributes.slug
-        },
-    ]}/>
-    <div class="w-full px-4 lg:px-8 gap-10 grid lg:grid-cols-11">
-        <div class="lg:col-span-6 h-full">
-            <figure class="min-h-[600px] max-h-[80vh] h-full w-full">
-                <img 
-                width={article.attributes.thumbnail.data.attributes.width}
-                height={article.attributes.thumbnail.data.attributes.height}
-                onload="this.style.opacity=1" class="h-full opacity-0 transition w-full object-cover" src={api + article.attributes.thumbnail.data.attributes.url + "?width=1000"} alt="">
-            </figure>
-        </div>
-        <div class="relative flex flex-col justify-center lg:col-span-5">
-            <span class=" lg:absolute top-0">{getDateInFrench(article.attributes.date, i18next.language)}</span>
-            <h3 class=" text-lg lg:text-4xl font-mango mt-2.5 lg:mt-0">{article.attributes.name}</h3>
-            <h1 class="font-poppins my-5 lg:my-5 text-2xl sm:text-[40px] 2xl:text-[70px] sm:leading-normal 2xl:leading-[105px]">{article.attributes.title}</h1>
-            <div class="flex flex-wrap gap-3">
-                {article.attributes.tags.data.map(tag=> <span
-                    style="box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);"
-                    class="px-2 py-1 lg:px-4 text-sm lg:text-base lg:py-2 rounded-full"
-                >
-                    {tag.attributes.name}
-                </span>)}
-            </div>
-            <div class=" lg:absolute bottom-0 mt-5 lg:mt-0">
-                {article.attributes.credits && <span class="block">{t('post.credits')} : {article.attributes.credits}</span>}
-                <span>{t('post.by')} {article.attributes.auteur.data.attributes.name}</span>
-            </div>
-        </div>
+<Main
+  meta={{
+    title: "ANRÓ x " + article.attributes.name,
+    description: article.attributes.description,
+    image:
+      api +
+      article.attributes.thumbnail.data.attributes.url +
+      "?resize=1200x630",
+  }}
+>
+  <Breadcrumb
+    items={[
+      {
+        label: article.attributes.categories.data[0].attributes.title,
+        href: "/topic/" + article.attributes.categories.data[0].attributes.slug,
+      },
+      {
+        label: article.attributes.title,
+        href: "/article/" + article.attributes.slug,
+      },
+    ]}
+  />
+  <div class="w-full px-4 lg:px-8 gap-10 grid lg:grid-cols-11">
+    <div class="lg:col-span-6 h-full">
+      <figure class="min-h-[600px] max-h-[80vh] h-full w-full">
+        <img
+          width={article.attributes.thumbnail.data.attributes.width}
+          height={article.attributes.thumbnail.data.attributes.height}
+          onload="this.style.opacity=1"
+          class="h-full opacity-0 transition w-full object-cover"
+          src={api +
+            article.attributes.thumbnail.data.attributes.url +
+            "?width=1000"}
+          alt=""
+        />
+      </figure>
     </div>
+    <div class="relative flex flex-col justify-center lg:col-span-5">
+      <span class="lg:absolute top-0"
+        >{getDateInFrench(article.attributes.date, i18next.language)}</span
+      >
+      <h3 class="text-lg lg:text-4xl font-mango mt-2.5 lg:mt-0">
+        {article.attributes.name}
+      </h3>
+      <h1
+        class="font-poppins my-5 lg:my-5 text-2xl sm:text-[40px] 2xl:text-[70px] sm:leading-normal 2xl:leading-[105px]"
+      >
+        {article.attributes.title}
+      </h1>
+      <div class="flex flex-wrap gap-3">
+        {
+          article.attributes.tags.data.map((tag) => (
+            <span
+              style="box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);"
+              class="px-2 py-1 lg:px-4 text-sm lg:text-base lg:py-2 rounded-full"
+            >
+              {tag.attributes.name}
+            </span>
+          ))
+        }
+      </div>
+      <div class="lg:absolute bottom-0 mt-5 lg:mt-0">
+        {
+          article.attributes.credits && (
+            <span class="block">
+              {t("post.credits")} : {article.attributes.credits}
+            </span>
+          )
+        }
+        <span
+          >{t("post.by")} {article.attributes.auteur.data.attributes.name}</span
+        >
+      </div>
+    </div>
+  </div>
 
-    <article class=" max-w-4xl w-full mx-auto mt-10 lg:mt-20 article" set:html={marked(article.attributes.content, {renderer})}>
-        
-    </article>
-    <Share slug={article.attributes.slug}/>
-</Main> 
+  <article
+    class="max-w-4xl w-full mx-auto mt-10 lg:mt-20 article"
+    set:html={marked(article.attributes.content, { renderer })}
+  />
+  <Share slug={article.attributes.slug} />
+</Main>

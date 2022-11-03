@@ -9,44 +9,57 @@ import Main from "../../layouts/Main.astro";
 changeLanguage("fr");
 
 export async function getStaticPaths() {
-    const { data } = await getCategories({ lang: i18next.language });
-    return data.map((category) => {
-        return {
-            params: { slug: category.attributes.slug },
-            props: { category },
-        };
-    });
+  const { data } = await getCategories({ lang: i18next.language });
+  return data.map((category) => {
+    return {
+      params: { slug: category.attributes.slug },
+      props: { category },
+    };
+  });
 }
 function sliceIntoChunks(arr, chunkSize) {
-    const res = [];
-    for (let i = 0; i < arr.length; i += chunkSize) {
-        const chunk = arr.slice(i, i + chunkSize);
-        res.push(chunk);
-    }
-    return res;
+  const res = [];
+  for (let i = 0; i < arr.length; i += chunkSize) {
+    const chunk = arr.slice(i, i + chunkSize);
+    res.push(chunk);
+  }
+  return res;
 }
 const { category } = Astro.props;
-const { data } = await getCategoryArticles({ lang: i18next.language, categorySlug: category.attributes.slug });
+const { data } = await getCategoryArticles({
+  lang: i18next.language,
+  categorySlug: category.attributes.slug,
+});
 const dataChunks = sliceIntoChunks(data, 6);
 ---
 
-<Main meta={{title:category.attributes.title + " // ANRÓ Magazine"}}>
-    <Breadcrumb items={[
-        {
-            label:category.attributes.title,
-            href:'/topic/' + category.attributes.slug
-        },
-    ]}/>
-    <h1 class="text-right  max-w-7xl w-full mx-auto font-asset text-xl lg:text-[60px] px-5 mt-14 mb-8"> {category.attributes.title}</h1>
-    <div class="lg:grid max-w-7xl w-full mx-auto flex flex-col grid-cols-14 gap-5">
-    {dataChunks.map((chunk)=>{
-        return(
-            <>
-
-                {chunk.map((article,index)=><Article data={article} main={index % 5 == 0 }/>)}
-            </>
-        )
+<Main meta={{ title: category.attributes.title + " // ANRÓ Magazine" }}>
+  <Breadcrumb
+    items={[
+      {
+        label: category.attributes.title,
+        href: "/topic/" + category.attributes.slug,
+      },
+    ]}
+  />
+  <h1
+    class="text-right max-w-7xl w-full mx-auto font-asset text-xl lg:text-[60px] px-5 mt-14 mb-8"
+  >
+    {category.attributes.title}
+  </h1>
+  <div
+    class="lg:grid max-w-7xl w-full mx-auto flex flex-col grid-cols-14 gap-5"
+  >
+    {
+      dataChunks.map((chunk) => {
+        return (
+          <>
+            {chunk.map((article, index) => (
+              <Article data={article} main={index % 5 == 0} />
+            ))}
+          </>
+        );
+      })
     }
-    )}
-    </div>
+  </div>
 </Main>

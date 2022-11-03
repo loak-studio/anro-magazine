@@ -10,8 +10,9 @@ const { data } = await getLegal({ lang: i18next.language });
 ---
 
 <Main>
-    <h1 class=" text-center text-4xl">{t('legal')}</h1>
-    <article class="article max-w-4xl w-full mx-auto" set:html={marked.parse(data.attributes.content)}>
-
-    </article>
+  <h1 class="text-center text-4xl">{t("legal")}</h1>
+  <article
+    class="article max-w-4xl w-full mx-auto"
+    set:html={marked.parse(data.attributes.content)}
+  />
 </Main>

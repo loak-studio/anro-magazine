@@ -1,20 +1,20 @@
-.article h2{
-    -webkit-text-stroke:1px black;
-    @apply text-4xl font-mango my-14;
+.article h2 {
+  -webkit-text-stroke: 1px black;
+  @apply text-4xl font-mango my-14;
 }
-.article p{
-    @apply font-poppins text-xl leading-[35px];
+.article p {
+  @apply font-poppins text-xl leading-[35px];
 }
 
-.article p img{
-    @apply w-full my-8;
+.article p img {
+  @apply w-full my-8;
 }
-.article{
-    @apply px-4 lg:px-0;
+.article {
+  @apply px-4 lg:px-0;
 }
-.article p{
-    @apply my-4;
+.article p {
+  @apply my-4;
 }
-.article ul li{
-    @apply before:content-['-'] before:mr-1;
+.article ul li {
+  @apply before:content-['-'] before:mr-1;
 }

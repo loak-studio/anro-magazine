@@ -1,35 +1,35 @@
 {
-    "meta":{
-        "description":"ANRÓ is a digital magazine dedicated to inspiring people, no matter what their field, created at the beginning as a simple fictional magazine to improve in graphic design, ANRÓ becomes, day after day, a real digital magazine."
-    },
-    "navigation":{
-        "back-to-home":"Back to index",
-        "homepage":"Home",
-        "categories":"Categories",
-        "about":"About"
-    },
-    "newsletter":{
-        "title":"newsletter",
-        "submit":"Submit",
-        "text":"Soyez au courant des dernières sorties et nouveautés !",
-        "email":"Adresse email"
-    },
-    "footer":{
-        "made-by":"Web site developped by"
-    },
-    "article":{
-        "read-more":"Read more"
-    },
-    "share":"Share",
-    "about":"About",
-    "post":{
-        "credits":"Photo credit",
-        "by":"By"
-    },
-    "category":{
-        "see-more":"See more"
-    },
+  "meta": {
+    "description": "ANRÓ is a digital magazine dedicated to inspiring people, no matter what their field, created at the beginning as a simple fictional magazine to improve in graphic design, ANRÓ becomes, day after day, a real digital magazine."
+  },
+  "navigation": {
+    "back-to-home": "Back to index",
+    "homepage": "Home",
+    "categories": "Categories",
+    "about": "About"
+  },
+  "newsletter": {
+    "title": "newsletter",
+    "submit": "Submit",
+    "text": "Soyez au courant des dernières sorties et nouveautés !",
+    "email": "Adresse email"
+  },
+  "footer": {
+    "made-by": "Web site developped by"
+  },
+  "article": {
+    "read-more": "Read more"
+  },
+  "share": "Share",
+  "about": "About",
+  "post": {
+    "credits": "Photo credit",
+    "by": "By"
+  },
+  "category": {
+    "see-more": "See more"
+  },
 
-    "back-to-top":"Back to top",
-    "legal":"Legal"
+  "back-to-top": "Back to top",
+  "legal": "Legal"
 }

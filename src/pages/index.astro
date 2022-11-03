@@ -4,7 +4,6 @@ import Main from "../layouts/Main.astro";
 import i18next, { t, changeLanguage } from "i18next";
 import Category from "../components/molecules/Category.astro";
 import LastArticle from "../components/molecules/LastArticle.astro";
-import Newsletter from "../components/molecules/Newsletter.astro";
 
 changeLanguage("fr");
 
@@ -12,7 +11,6 @@ const { data } = await getCategories({ lang: i18next.language });
 ---
 
 <Main>
-	<LastArticle/>
-	{data.map((category,index)=><Category index={index} data={category}/>)}
-
+  <LastArticle />
+  {data.map((category, index) => <Category index={index} data={category} />)}
 </Main>

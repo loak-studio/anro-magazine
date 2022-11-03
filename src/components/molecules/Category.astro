@@ -3,33 +3,67 @@ import { localizePath } from "astro-i18next";
 import i18next, { t } from "i18next";
 import { getCategoryArticles } from "../../cms/get-category-articles";
 import Article from "./Article.astro";
-const {data,index}= Astro.props
-const {title,slug} = data.attributes
-const {id} = data
-const articles = await getCategoryArticles({lang:i18next.language,categorySlug:data.attributes.slug})
-
+const { data, index } = Astro.props;
+const { title, slug } = data.attributes;
+const { id } = data;
+const articles = await getCategoryArticles({
+  lang: i18next.language,
+  categorySlug: data.attributes.slug,
+});
 ---
 
-<section class=" max-w-7xl w-full mx-auto mb-12 lg:mb-20 px-2">
-    <div class={"flex mb-8 lg:mb-0 items-center justify-between " + " " +(index%2 == 0 ? 'flex-row':'flex-row-reverse')}>
-        <div style="box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);" class="relative gap-6  flex items-center hover:bg-gray-200 transition rounded-full p-2">
-            <a href={localizePath('/topic/'+slug)} class="before:absolute font-poppins before:inset-0">{t('category.see-more')}</a>
-            <span class="border border-black rounded-full flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-right" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <line x1="13" y1="18" x2="19" y2="12" />
-                    <line x1="13" y1="6" x2="19" y2="12" />
-                  </svg>
-            </span>
-        </div>
-        <div class="font-asset px-2 lg:text-[50px]">
-            {data.attributes.title}
-        </div>
+<section class="max-w-7xl w-full mx-auto mb-12 lg:mb-20 px-2">
+  <div
+    class={"flex mb-8 lg:mb-0 items-center justify-between " +
+      " " +
+      (index % 2 == 0 ? "flex-row" : "flex-row-reverse")}
+  >
+    <div
+      style="box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);"
+      class="relative gap-6 flex items-center hover:bg-gray-200 transition rounded-full p-2"
+    >
+      <a
+        href={localizePath("/topic/" + slug)}
+        class="before:absolute font-poppins before:inset-0"
+        >{t("category.see-more")}</a
+      >
+      <span
+        class="border border-black rounded-full flex items-center justify-center"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-arrow-right"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#2c3e50"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <line x1="13" y1="18" x2="19" y2="12"></line>
+          <line x1="13" y1="6" x2="19" y2="12"></line>
+        </svg>
+      </span>
     </div>
-    <div class="lg:grid flex flex-col grid-cols-14 gap-5">
-        {articles.data[0]&&<Article data={articles.data[0]} main={index%2 == 0}/>}
-        {articles.data[1] && <Article data={articles.data[1]}/>}
-        {articles.data[2] && <Article main={!(index%2 == 0)} data={articles.data[2]}/>}
+    <div class="font-asset px-2 lg:text-[50px]">
+      {data.attributes.title}
     </div>
+  </div>
+  <div class="lg:grid flex flex-col grid-cols-14 gap-5">
+    {
+      articles.data[0] && (
+        <Article data={articles.data[0]} main={index % 2 == 0} />
+      )
+    }
+    {articles.data[1] && <Article data={articles.data[1]} />}
+    {
+      articles.data[2] && (
+        <Article main={!(index % 2 == 0)} data={articles.data[2]} />
+      )
+    }
+  </div>
 </section>

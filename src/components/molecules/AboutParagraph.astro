@@ -1,13 +1,14 @@
 ---
-import {marked } from 'marked'
-const {title,content} = Astro.props
+import { marked } from "marked";
+const { title, content } = Astro.props;
 ---
 
-<div class=" max-w-5xl grid lg:grid-cols-4 w-full mx-auto mb-12 lg:mb-20">
-    <div class=" text-4xl font-mango mb-4 lg:mb-0">
-        {title}
-    </div>
-    <div class="col-span-3 font-poppins text-xl" set:html={marked.parse(content)}>
-      
-    </div>
+<div class="max-w-5xl grid lg:grid-cols-4 w-full mx-auto mb-12 lg:mb-20">
+  <div class="text-4xl font-mango mb-4 lg:mb-0">
+    {title}
+  </div>
+  <div
+    class="col-span-3 font-poppins text-xl"
+    set:html={marked.parse(content)}
+  />
 </div>

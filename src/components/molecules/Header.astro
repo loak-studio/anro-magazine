@@ -7,88 +7,108 @@ import LangPicker from "../atoms/LangPicker.astro";
 const { data } = await getCategories({ lang: i18next.language });
 ---
 
-<header class="flex mb-2.5 lg:items-baseline justify-center lg:justify-between lg:px-8 w-full mx-auto py-2.5 lg:my-10">
-    <div class="lg:hidden left-0 top-0 absolute z-30 scale-50">
-        <button title="Menu" id="toggle-nav" class="hamburger hamburger--arrow " type="button">
-            <span class="hamburger-box">
-              <span class="hamburger-inner"></span>
-            </span>
-          </button>
-    </div>
-      
-    <a class="" title={t('navigation.back-to-home')} href={localizePath('/')}>
-       <span class="block font-asset text-2xl lg:text-6xl">anró</span>
-    </a>
-    <nav id="main-nav" class="font-poppins lg:-translate-y-2  lg:transition-none h-screen font-medium w-screen fixed lg:h-auto px-4 lg:px-0 lg:w-auto transition top-0 z-20 bg-white left-0 -translate-x-[500vw] lg:translate-x-0 lg:static">
-        <ul class="flex flex-col lg:flex-row h-full lg:h-auto gap-4 lg:gap-16 justify-center lg:items-center">
-            <li>
-                <a class="text-2xl lg:text-base hover:underline" href={localizePath('/')}>{t("navigation.homepage")}</a>
-            </li>
-            <li class="relative">
-                <button id="hamburger-button" class="flex peer items-center">
-                    <span class="text-2xl lg:text-base">{t("navigation.categories")}</span>
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="hidden lg:block transition"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="#2c3e50"
-                        fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    >
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"
-                        ></path>
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                </button>
-                <ul
-                    id="dropdown"
-                    class="bg-white border-l-4 transition-opacity focus-within:translate-y-0 focus-within:opacity-100  hover:opacity-100 lg:-translate-y-[100vh] peer-hover:translate-y-0 hover:translate-y-0  peer-hover:opacity-100 w-full lg:shadow-md lg:border lg:border-black p-2 lg:opacity-0 lg:absolute lg:left-1/2 lg:-translate-x-1/2"
+<header
+  class="flex mb-2.5 lg:items-baseline justify-center lg:justify-between lg:px-8 w-full mx-auto py-2.5 lg:my-10"
+>
+  <div class="lg:hidden left-0 top-0 absolute z-30 scale-50">
+    <button
+      title="Menu"
+      id="toggle-nav"
+      class="hamburger hamburger--arrow"
+      type="button"
+    >
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+  </div>
+
+  <a class="" title={t("navigation.back-to-home")} href={localizePath("/")}>
+    <span class="block font-asset text-2xl lg:text-6xl">anró</span>
+  </a>
+  <nav
+    id="main-nav"
+    class="font-poppins lg:-translate-y-2 lg:transition-none h-screen font-medium w-screen fixed lg:h-auto px-4 lg:px-0 lg:w-auto transition top-0 z-20 bg-white left-0 -translate-x-[500vw] lg:translate-x-0 lg:static"
+  >
+    <ul
+      class="flex flex-col lg:flex-row h-full lg:h-auto gap-4 lg:gap-16 justify-center lg:items-center"
+    >
+      <li>
+        <a
+          class="text-2xl lg:text-base hover:underline"
+          href={localizePath("/")}>{t("navigation.homepage")}</a
+        >
+      </li>
+      <li class="relative">
+        <button id="hamburger-button" class="flex peer items-center">
+          <span class="text-2xl lg:text-base">{t("navigation.categories")}</span
+          >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="hidden lg:block transition"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#2c3e50"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <ul
+          id="dropdown"
+          class="bg-white border-l-4 transition-opacity focus-within:translate-y-0 focus-within:opacity-100 hover:opacity-100 lg:-translate-y-[100vh] peer-hover:translate-y-0 hover:translate-y-0 peer-hover:opacity-100 w-full lg:shadow-md lg:border lg:border-black p-2 lg:opacity-0 lg:absolute lg:left-1/2 lg:-translate-x-1/2"
+        >
+          {
+            data.map((link) => (
+              <li>
+                <a
+                  class="hover:underline inline-block py-1 lg:py-0 text-2xl lg:text-base"
+                  href={localizePath("/topic/" + link.attributes.slug)}
                 >
-                    {
-                        data.map((link) => 
-                            <li>
-                                <a class="hover:underline inline-block py-1 lg:py-0 text-2xl lg:text-base" href={localizePath('/topic/'+link.attributes.slug )}>
-                                    {link.attributes.title}
-                                </a>
-                            </li>
-                        )
-                    }
-                </ul>
-            </li>
-            <li>
-                <a class=" hover:underline text-2xl lg:text-base" href={localizePath('/a-propos')}>{t("navigation.about")}</a>
-            </li>
+                  {link.attributes.title}
+                </a>
+              </li>
+            ))
+          }
         </ul>
-    </nav>
-    <div class="absolute right-0 top-4  lg:static">
-        <LangPicker currentLang={i18next.language} languages={i18next.languages}/>
-    </div>
+      </li>
+      <li>
+        <a
+          class="hover:underline text-2xl lg:text-base"
+          href={localizePath("/a-propos")}>{t("navigation.about")}</a
+        >
+      </li>
+    </ul>
+  </nav>
+  <div class="absolute right-0 top-4 lg:static">
+    <LangPicker currentLang={i18next.language} languages={i18next.languages} />
+  </div>
 </header>
 
 <script>
-window.addEventListener('load',()=>{
-    const button = document.querySelector('#toggle-nav')
-    const nav = document.querySelector('#main-nav')
-    const html = document.querySelector('html')
-    button.addEventListener('click',()=>{
-        button.classList.toggle("is-active")
-        nav.classList.toggle('-translate-x-[500vw]')
-        html.classList.toggle('overflow-hidden')
-        window.scrollTo(0,0)
-    })
-    const picker = document.querySelector('#lang-picker').querySelector('ul')
-    const notPicked = document.querySelectorAll('.not-picked')
-    const indicator = document.querySelector('#indicator')
-    picker.addEventListener('click',()=>{
-        indicator.classList.toggle('rotate-180')
-        notPicked.forEach(item=>{
-            item.classList.toggle('hidden')
-        })
-    })
-})
-
+  window.addEventListener("load", () => {
+    const button = document.querySelector("#toggle-nav");
+    const nav = document.querySelector("#main-nav");
+    const html = document.querySelector("html");
+    button.addEventListener("click", () => {
+      button.classList.toggle("is-active");
+      nav.classList.toggle("-translate-x-[500vw]");
+      html.classList.toggle("overflow-hidden");
+      window.scrollTo(0, 0);
+    });
+    const picker = document.querySelector("#lang-picker").querySelector("ul");
+    const notPicked = document.querySelectorAll(".not-picked");
+    const indicator = document.querySelector("#indicator");
+    picker.addEventListener("click", () => {
+      indicator.classList.toggle("rotate-180");
+      notPicked.forEach((item) => {
+        item.classList.toggle("hidden");
+      });
+    });
+  });
 </script>

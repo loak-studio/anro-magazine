@@ -9,7 +9,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "translate":"npx astro-i18next generate"
+    "translate": "npx astro-i18next generate"
   },
   "dependencies": {
     "@astrojs/sitemap": "^1.0.0",
@@ -20,5 +20,9 @@
     "i18next-fs-backend": "^1.1.5",
     "marked": "^4.1.0",
     "tailwindcss": "^3.1.8"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.7.0"
   }
 }

@@ -4,50 +4,65 @@ import { getAbout } from "../cms/get-about";
 import Main from "../layouts/Main.astro";
 import i18next, { t, changeLanguage } from "i18next";
 import AboutParagraph from "../components/molecules/AboutParagraph.astro";
-import Anro from "../components/atoms/Anro.astro";
-import Mail from "../components/atoms/Mail.astro";
-import Instagram from "../components/atoms/Instagram.astro";
-import LinkedIn from "../components/atoms/LinkedIn.astro";
 
 changeLanguage("fr");
 
 const { data } = await getAbout({ lang: i18next.language });
 ---
 
-<Main meta={{title: t('about') + ' // ANRÓ Magazine'}}>
-    <div class="px-2 lg:px-8">
-        <section class="bg-black text-white text-3xl lg:text-8xl font-asset flex items-center justify-center py-20 mb-12 lg:mb-20 px-4">
-       
-            anró
-        </section>
-        {data.attributes.content.map(line=><AboutParagraph title={line.title} content={line.content}/>)}
-        <div class=" max-w-5xl grid lg:grid-cols-4 w-full mx-auto mb-12 lg:mb-20">
-            <div class=" text-4xl font-mango">
-                Contact
-            </div>
-      
-                <ul class="col-span-3 gap-2 flex font-mango flex-col text-xl items-start">
-                    <li>
-                        <a title="Email" class="inline-block hover:underline transition" href={"mailto:" + Social.mail}>
-                            Email
-                        </a>
-                    </li>
-                    <li>
-                        <a title="Instagram" class="inline-block hover:underline transition" href={Social.instagram}>
-                            Instagram
-                        </a>
-                    </li>
-                    <li>
-                        <a title="LinkedIn" class="inline-block hover:underline transition" href={Social.linkedin}>
-                            LinkedIn
-                        </a>
-                    </li>
-                    <li>
-                        <a title="Twitter" class="inline-block hover:underline transition" href={Social.twitter}>
-                            Twitter
-                        </a>
-                    </li>
-                </ul>
-        </div>
+<Main meta={{ title: t("about") + " // ANRÓ Magazine" }}>
+  <div class="px-2 lg:px-8">
+    <section
+      class="bg-black text-white text-3xl lg:text-8xl font-asset flex items-center justify-center py-20 mb-12 lg:mb-20 px-4"
+    >
+      anró
+    </section>
+    {
+      data.attributes.content.map((line) => (
+        <AboutParagraph title={line.title} content={line.content} />
+      ))
+    }
+    <div class="max-w-5xl grid lg:grid-cols-4 w-full mx-auto mb-12 lg:mb-20">
+      <div class="text-4xl font-mango">Contact</div>
+
+      <ul class="col-span-3 gap-2 flex font-mango flex-col text-xl items-start">
+        <li>
+          <a
+            title="Email"
+            class="inline-block hover:underline transition"
+            href={"mailto:" + Social.mail}
+          >
+            Email
+          </a>
+        </li>
+        <li>
+          <a
+            title="Instagram"
+            class="inline-block hover:underline transition"
+            href={Social.instagram}
+          >
+            Instagram
+          </a>
+        </li>
+        <li>
+          <a
+            title="LinkedIn"
+            class="inline-block hover:underline transition"
+            href={Social.linkedin}
+          >
+            LinkedIn
+          </a>
+        </li>
+        <li>
+          <a
+            title="Twitter"
+            class="inline-block hover:underline transition"
+            href={Social.twitter}
+          >
+            Twitter
+          </a>
+        </li>
+      </ul>
     </div>
+  </div>
 </Main>

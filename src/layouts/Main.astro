@@ -1,87 +1,108 @@
 ---
-import i18next, {t} from "i18next";
+import i18next, { t } from "i18next";
 import { HeadHrefLangs } from "astro-i18next/components";
 import Header from "../components/molecules/Header.astro";
 import "../style/app.css";
 import Footer from "../components/molecules/Footer.astro";
 const title = "ANRÓ Magazine";
-const description = t('meta.description')
+const description = t("meta.description");
 const image = Astro.url.origin + "/share.png";
 const { meta } = Astro.props;
 ---
 
 <html class="lg:overflow-auto scroll-smooth" lang={i18next.language}>
-        <head>
-                <meta charset="utf-8" />
-                <meta name="viewport" content="width=device-width" />
-                <meta name="generator" content={Astro.generator} />
-                <title>
-                        {
-                                meta && meta.title
-                                        ? meta.title 
-                                        : title
-                        }
-                </title>
-                <HeadHrefLangs />
-                <meta name="title" content={   meta && meta.title
-                        ? meta.title 
-                        : title} />
-                <meta name="description" content={meta && meta.description ? meta.description : description} />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>
+      {meta && meta.title ? meta.title : title}
+    </title>
+    <HeadHrefLangs />
+    <meta name="title" content={meta && meta.title ? meta.title : title} />
+    <meta
+      name="description"
+      content={meta && meta.description ? meta.description : description}
+    />
 
-                <meta property="og:type" content="website" />
-                <meta property="og:url" content={Astro.url.href} />
-                <meta property="og:title" content={meta && meta.title
-                        ? meta.title 
-                        : title} />
-                <meta property="og:description" content={meta && meta.description ? meta.description : description} />
-                <meta
-                        property="og:image"
-                        content={meta && meta.image ? meta.image : image}
-                />
-                <link
-                        href="/favicon.ico"
-                        rel="shortcut icon"
-                        type="image/x-icon"
-                />
-                <meta property="twitter:card" content="summary_large_image" />
-                <meta property="twitter:url" content={Astro.url.href} />
-                <meta property="twitter:title" content={meta && meta.title
-                        ? meta.title 
-                        : title} />
-                <meta property="twitter:description" content={meta && meta.description ? meta.description : description} />
-                <meta
-                        property="twitter:image"
-                        content={meta && meta.image ? meta.image : image}
-                />
-                <script defer data-domain="anro-magazine.com" src="https://plausible.io/js/plausible.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta
+      property="og:title"
+      content={meta && meta.title ? meta.title : title}
+    />
+    <meta
+      property="og:description"
+      content={meta && meta.description ? meta.description : description}
+    />
+    <meta
+      property="og:image"
+      content={meta && meta.image ? meta.image : image}
+    />
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url.href} />
+    <meta
+      property="twitter:title"
+      content={meta && meta.title ? meta.title : title}
+    />
+    <meta
+      property="twitter:description"
+      content={meta && meta.description ? meta.description : description}
+    />
+    <meta
+      property="twitter:image"
+      content={meta && meta.image ? meta.image : image}
+    />
+    <script
+      defer
+      data-domain="anro-magazine.com"
+      src="https://plausible.io/js/plausible.js"
+    ></script>
+  </head>
 
-        </head>
-
-        <body class="flex flex-col min-h-screen h-full  md:overflow-auto">
-                <div class="flex-1 w-screen overflow-x-hidden">
-                        <Header/>
-                        <slot />
-                </div>
-                <a id="back-to-top" title={t('back-to-top')} class="fixed opacity-0 focus-visible:opacity-100 right-4 bottom-4 hover:underline transition rounded-full text-gray-500 text-8xl hover:text-gray-600 font-serif" href="#"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-up-circle" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <circle cx="12" cy="12" r="9" />
-                        <line x1="12" y1="8" x2="8" y2="12" />
-                        <line x1="12" y1="8" x2="12" y2="16" />
-                        <line x1="16" y1="12" x2="12" y2="8" />
-                      </svg></a>
-                <Footer/>
-        </body>
+  <body class="flex flex-col min-h-screen h-full md:overflow-auto">
+    <div class="flex-1 w-screen overflow-x-hidden">
+      <Header />
+      <slot />
+    </div>
+    <a
+      id="back-to-top"
+      title={t("back-to-top")}
+      class="fixed opacity-0 focus-visible:opacity-100 right-4 bottom-4 hover:underline transition rounded-full text-gray-500 text-8xl hover:text-gray-600 font-serif"
+      href="#"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon icon-tabler icon-tabler-arrow-up-circle"
+        width="44"
+        height="44"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <circle cx="12" cy="12" r="9"></circle>
+        <line x1="12" y1="8" x2="8" y2="12"></line>
+        <line x1="12" y1="8" x2="12" y2="16"></line>
+        <line x1="16" y1="12" x2="12" y2="8"></line>
+      </svg>
+    </a>
+    <Footer />
+  </body>
 </html>
 
 <script>
-window.addEventListener('load',()=>{
-        const backtotop = document.querySelector('#back-to-top')
-        window.addEventListener('scroll',(e)=>{
-                if(window.scrollY < 500){
-                        backtotop.classList.add('opacity-0')
-                }else{
-                        backtotop.classList.remove('opacity-0')
-                }
-        })
-})
+  window.addEventListener("load", () => {
+    const backtotop = document.querySelector("#back-to-top");
+    window.addEventListener("scroll", (e) => {
+      if (window.scrollY < 500) {
+        backtotop.classList.add("opacity-0");
+      } else {
+        backtotop.classList.remove("opacity-0");
+      }
+    });
+  });
 </script>

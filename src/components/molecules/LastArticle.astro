@@ -1,5 +1,4 @@
 ---
-
 import { localizePath } from "astro-i18next";
 import i18next, { t } from "i18next";
 import { api } from "../../cms/config";
@@ -8,60 +7,80 @@ import { getDateInFrench } from "../../utils/get-date-in-french";
 import Anro from "../atoms/Anro.astro";
 
 const { data } = await getLastArticle({ lang: i18next.language });
-const lastArticle = data[0]
+const lastArticle = data[0];
 ---
-<section class=" mb-12 lg:mb-20">
-    <div class="relative z-0 group">
-      <a class="before:absolute before:inset-0 before:z-20 focus-visible:before:outline-dashed focus-visible:before:outline-offset-2" href={localizePath('/article/' + lastArticle.attributes.slug)}><span class="sr-only">{t('article.read-more')}</span></a>
-        <figure class="w-screen relative brightness-75 px-2 lg:px-8 min-h-[400px] h-[80vh] overflow-hidden">
-            <picture class="w-full h-full ">
-              <source
-              onload="this.style.opacity=1"
-              class="w-full h-full object-cover transition opacity-0"
-              srcset={api + lastArticle.attributes.thumbnail.data.attributes.url + "?width=1920&format=webp"}
-              type="image/webp"
-              media="(min-width: 1000px)"
-            />
-              <source
-              onload="this.style.opacity=1"
-              class="w-full h-full object-cover transition opacity-0"
-              srcset={api + lastArticle.attributes.thumbnail.data.attributes.url + "?width=1920"}
-              media="(min-width: 1000px)"
-            />
-            <source
-            onload="this.style.opacity=1"
-            class="w-full h-full object-cover transition opacity-0"
-            srcset={api + lastArticle.attributes.mobile_thumbnail.data.attributes.url + "?width=1000&format=webp"}
-            type="image/webp"
-            media="(max-width: 999px)"
-          />
-            <source
-            onload="this.style.opacity=1"
-            class="w-full h-full object-cover transition opacity-0"
-            srcset={api + lastArticle.attributes.mobile_thumbnail.data.attributes.url + "?width=1000"}
-            media="(max-width: 999px)"
-          />
-          <img
+
+<section class="mb-12 lg:mb-20">
+  <div class="relative z-0 group">
+    <a
+      class="before:absolute before:inset-0 before:z-20 focus-visible:before:outline-dashed focus-visible:before:outline-offset-2"
+      href={localizePath("/article/" + lastArticle.attributes.slug)}
+      ><span class="sr-only">{t("article.read-more")}</span>
+    </a>
+    <figure
+      class="w-screen relative brightness-75 px-2 lg:px-8 min-h-[400px] h-[80vh] overflow-hidden"
+    >
+      <picture class="w-full h-full">
+        <source
           onload="this.style.opacity=1"
-              class="w-full transition opacity-0 h-full object-cover"
-              src={api + lastArticle.attributes.thumbnail.data.attributes.url}
-              alt=""
-            />
-        </picture>
-        </figure>
-        <div class="text-white absolute right-4 lg:right-16 top-4">
-          <span class="hidden lg:block font-asset text-6xl">anró</span>
-          <span class="font-mango flex flex-col items-end">
-            N°{lastArticle.attributes.numero}
-          </span>
-        </div>
-        <div class="absolute left-4 bottom-4 lg:left-16 lg:bottom-8 text-white">
-            <span class="block text-[32px] lg:text-[60px] font-mango">{lastArticle.attributes.name}</span>
-            <div class="relative group">
-              <h2 class=" text-[40px] lg:text-[70px] font-mango">{lastArticle.attributes.title}</h2>
-              
-            </div>
-            <span class="text-xl font-poppins">{getDateInFrench(lastArticle.attributes.date,i18next.language)}</span>
-        </div>
+          class="w-full h-full object-cover transition opacity-0"
+          srcset={api +
+            lastArticle.attributes.thumbnail.data.attributes.url +
+            "?width=1920&format=webp"}
+          type="image/webp"
+          media="(min-width: 1000px)"
+        />
+        <source
+          onload="this.style.opacity=1"
+          class="w-full h-full object-cover transition opacity-0"
+          srcset={api +
+            lastArticle.attributes.thumbnail.data.attributes.url +
+            "?width=1920"}
+          media="(min-width: 1000px)"
+        />
+        <source
+          onload="this.style.opacity=1"
+          class="w-full h-full object-cover transition opacity-0"
+          srcset={api +
+            lastArticle.attributes.mobile_thumbnail.data.attributes.url +
+            "?width=1000&format=webp"}
+          type="image/webp"
+          media="(max-width: 999px)"
+        />
+        <source
+          onload="this.style.opacity=1"
+          class="w-full h-full object-cover transition opacity-0"
+          srcset={api +
+            lastArticle.attributes.mobile_thumbnail.data.attributes.url +
+            "?width=1000"}
+          media="(max-width: 999px)"
+        />
+        <img
+          onload="this.style.opacity=1"
+          class="w-full transition opacity-0 h-full object-cover"
+          src={api + lastArticle.attributes.thumbnail.data.attributes.url}
+          alt=""
+        />
+      </picture>
+    </figure>
+    <div class="text-white absolute right-4 lg:right-16 top-4">
+      <span class="hidden lg:block font-asset text-6xl">anró</span>
+      <span class="font-mango flex flex-col items-end">
+        N°{lastArticle.attributes.numero}
+      </span>
     </div>
+    <div class="absolute left-4 bottom-4 lg:left-16 lg:bottom-8 text-white">
+      <span class="block text-[32px] lg:text-[60px] font-mango"
+        >{lastArticle.attributes.name}</span
+      >
+      <div class="relative group">
+        <h2 class="text-[40px] lg:text-[70px] font-mango">
+          {lastArticle.attributes.title}
+        </h2>
+      </div>
+      <span class="text-xl font-poppins"
+        >{getDateInFrench(lastArticle.attributes.date, i18next.language)}</span
+      >
+    </div>
+  </div>
 </section>

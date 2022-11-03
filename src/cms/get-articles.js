@@ -1,5 +1,6 @@
-import {api} from "./config"
+import { api } from "./config";
 
-const getArticles = async({lang}) => await (await fetch(api + '/api/articles?populate=*&locale='+lang)).json()
+const getArticles = async ({ lang }) =>
+  await (await fetch(api + "/api/articles?populate=*&locale=" + lang)).json();
 
-export {getArticles}
+export { getArticles };
