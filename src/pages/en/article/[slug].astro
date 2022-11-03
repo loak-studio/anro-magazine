@@ -43,7 +43,7 @@ const article = Astro.props;
         href: "/topic/" + article.attributes.categories.data[0].attributes.slug,
       },
       {
-        label: article.attributes.title,
+        label: article.attributes.name,
         href: "/article/" + article.attributes.slug,
       },
     ]}
