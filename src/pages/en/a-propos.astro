@@ -26,20 +26,20 @@ const { data } = await getAbout({ lang: i18next.language });
                 Contact
             </div>
       
-                <ul class="col-span-3 flex">
+                <ul class="col-span-3 flex font-mango flex-col text-xl items-start">
                     <li>
-                        <a title="Email" class="p-2 flex hover:bg-gray-200 rounded-md transition" href={"mailto:" + Social.mail}>
-                            <Mail/>
+                        <a title="Email" class="p-2 inline-block hover:underline transition" href={"mailto:" + Social.mail}>
+                            Email
                         </a>
                     </li>
                     <li>
-                        <a title="Instagram" class="p-2 flex hover:bg-gray-200 rounded-md transition" href={Social.instagram}>
-                            <Instagram/>
+                        <a title="Instagram" class="p-2 inline-block hover:underline transition" href={Social.instagram}>
+                            Instagram
                         </a>
                     </li>
                     <li>
-                        <a title="LinkedIn" class="p-2 flex hover:bg-gray-200 rounded-md transition" href={Social.linkedin}>
-                            <LinkedIn/>
+                        <a title="LinkedIn" class="p-2 inline-block hover:underline transition" href={Social.linkedin}>
+                            LinkedIn
                         </a>
                     </li>
                 </ul>
