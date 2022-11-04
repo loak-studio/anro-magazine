@@ -9,26 +9,26 @@ import Main from "../../../layouts/Main.astro";
 changeLanguage("en");
 
 export async function getStaticPaths() {
-  const { data } = await getCategories({ lang: i18next.language });
-  return data.map((category) => {
-    return {
-      params: { slug: category.attributes.slug },
-      props: { category },
-    };
-  });
+    const { data } = await getCategories({ lang: i18next.language });
+    return data.map((category) => {
+        return {
+            params: { slug: category.attributes.slug },
+            props: { category },
+        };
+    });
 }
 function sliceIntoChunks(arr, chunkSize) {
-  const res = [];
-  for (let i = 0; i < arr.length; i += chunkSize) {
-    const chunk = arr.slice(i, i + chunkSize);
-    res.push(chunk);
-  }
-  return res;
+    const res = [];
+    for (let i = 0; i < arr.length; i += chunkSize) {
+        const chunk = arr.slice(i, i + chunkSize);
+        res.push(chunk);
+    }
+    return res;
 }
 const { category } = Astro.props;
 const { data } = await getCategoryArticles({
-  lang: i18next.language,
-  categorySlug: category.attributes.slug,
+    lang: i18next.language,
+    categorySlug: category.attributes.slug,
 });
 const dataChunks = sliceIntoChunks(data, 6);
 ---

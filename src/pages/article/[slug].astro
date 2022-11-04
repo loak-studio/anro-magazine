@@ -11,17 +11,17 @@ import Breadcrumb from "../../components/molecules/Breadcrumb.astro";
 changeLanguage("fr");
 
 export async function getStaticPaths() {
-  const { data } = await getArticles({ lang: i18next.language });
-  return data.map((article) => {
-    return {
-      params: { slug: article.attributes.slug },
-      props: article,
-    };
-  });
+    const { data } = await getArticles({ lang: i18next.language });
+    return data.map((article) => {
+        return {
+            params: { slug: article.attributes.slug },
+            props: article,
+        };
+    });
 }
 const renderer = new marked.Renderer();
 renderer.image = (href, title, text) => {
-  return `<img loading="lazy" src="${api + href}?width=1000" alt="${text}"/>`;
+    return `<img loading="lazy" src="${api + href}?width=1000" alt="${text}"/>`;
 };
 const article = Astro.props;
 ---
