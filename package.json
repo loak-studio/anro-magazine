@@ -9,7 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "translate": "npx astro-i18next generate"
+    "translate": "npx astro-i18next generate",
+    "prettier": "prettier -w ."
   },
   "dependencies": {
     "@astrojs/sitemap": "^1.0.0",
