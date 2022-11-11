@@ -51,16 +51,48 @@ const article = Astro.props;
   <div class="w-full px-4 lg:px-8 gap-10 grid lg:grid-cols-11">
     <div class="lg:col-span-6 h-full">
       <figure class="min-h-[600px] max-h-[80vh] h-full w-full">
-        <img
-          width={article.attributes.thumbnail.data.attributes.width}
-          height={article.attributes.thumbnail.data.attributes.height}
-          onload="this.style.opacity=1"
-          class="h-full opacity-0 transition w-full object-cover"
-          src={api +
-            article.attributes.thumbnail.data.attributes.url +
-            "?width=1000"}
-          alt=""
-        />
+        <picture>
+          <source
+            onload="this.style.opacity=1"
+            class="h-full opacity-0 transition w-full object-cover"
+            srcset={api +
+              article.attributes.thumbnail.data.attributes.url +
+              "?width=1920&format=webp"}
+            type="image/webp"
+            media="(min-width: 1000px)"
+          />
+          <source
+            onload="this.style.opacity=1"
+            class="w-full h-full object-cover transition opacity-0"
+            srcset={api +
+              article.attributes.thumbnail.data.attributes.url +
+              "?width=1920"}
+            media="(min-width: 1000px)"
+          />
+          <source
+            onload="this.style.opacity=1"
+            class="w-full h-full object-cover transition opacity-0"
+            srcset={api +
+              article.attributes.mobile_thumbnail.data.attributes.url +
+              "?width=1000&format=webp"}
+            type="image/webp"
+            media="(max-width: 999px)"
+          />
+          <source
+            onload="this.style.opacity=1"
+            class="w-full h-full object-cover transition opacity-0"
+            srcset={api +
+              article.attributes.mobile_thumbnail.data.attributes.url +
+              "?width=1000"}
+            media="(max-width: 999px)"
+          />
+          <img
+            onload="this.style.opacity=1"
+            class="w-full transition opacity-0 h-full object-cover"
+            src={api + article.attributes.thumbnail.data.attributes.url}
+            alt=""
+          />
+        </picture>
       </figure>
     </div>
     <div class="relative flex flex-col justify-center lg:col-span-5">

@@ -52,47 +52,46 @@ const article = Astro.props;
     <div class="lg:col-span-6 h-full">
       <figure class="min-h-[600px] max-h-[80vh] h-full w-full">
         <picture>
-       
-        <source
-          onload="this.style.opacity=1"
-          class="h-full opacity-0 transition w-full object-cover"
-          srcset={api +
-            article.attributes.thumbnail.data.attributes.url +
-            "?width=1920&format=webp"}
-          type="image/webp"
-          media="(min-width: 1000px)"
-        />
-        <source
-          onload="this.style.opacity=1"
-          class="w-full h-full object-cover transition opacity-0"
-          srcset={api +
-            article.attributes.thumbnail.data.attributes.url +
-            "?width=1920"}
-          media="(min-width: 1000px)"
-        />
-        <source
-          onload="this.style.opacity=1"
-          class="w-full h-full object-cover transition opacity-0"
-          srcset={api +
-            article.attributes.mobile_thumbnail.data.attributes.url +
-            "?width=1000&format=webp"}
-          type="image/webp"
-          media="(max-width: 999px)"
-        />
-        <source
-          onload="this.style.opacity=1"
-          class="w-full h-full object-cover transition opacity-0"
-          srcset={api +
-            article.attributes.mobile_thumbnail.data.attributes.url +
-            "?width=1000"}
-          media="(max-width: 999px)"
-        />
-        <img
-          onload="this.style.opacity=1"
-          class="w-full transition opacity-0 h-full object-cover"
-          src={api + article.attributes.thumbnail.data.attributes.url}
-          alt=""
-        />
+          <source
+            onload="this.style.opacity=1"
+            class="h-full opacity-0 transition w-full object-cover"
+            srcset={api +
+              article.attributes.thumbnail.data.attributes.url +
+              "?width=1920&format=webp"}
+            type="image/webp"
+            media="(min-width: 1000px)"
+          />
+          <source
+            onload="this.style.opacity=1"
+            class="w-full h-full object-cover transition opacity-0"
+            srcset={api +
+              article.attributes.thumbnail.data.attributes.url +
+              "?width=1920"}
+            media="(min-width: 1000px)"
+          />
+          <source
+            onload="this.style.opacity=1"
+            class="w-full h-full object-cover transition opacity-0"
+            srcset={api +
+              article.attributes.mobile_thumbnail.data.attributes.url +
+              "?width=1000&format=webp"}
+            type="image/webp"
+            media="(max-width: 999px)"
+          />
+          <source
+            onload="this.style.opacity=1"
+            class="w-full h-full object-cover transition opacity-0"
+            srcset={api +
+              article.attributes.mobile_thumbnail.data.attributes.url +
+              "?width=1000"}
+            media="(max-width: 999px)"
+          />
+          <img
+            onload="this.style.opacity=1"
+            class="w-full transition opacity-0 h-full object-cover"
+            src={api + article.attributes.thumbnail.data.attributes.url}
+            alt=""
+          />
         </picture>
       </figure>
     </div>
