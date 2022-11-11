@@ -12,6 +12,7 @@ export const get = async () => {
       link: "/article/" + post.attributes.slug,
       title: post.attributes.name,
       pubDate: post.attributes.date,
+      description:post.attributes.description
     })),
     // (optional) inject custom xml
     customData: `<language>${i18next.language}</language>`,
