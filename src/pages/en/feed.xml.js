@@ -12,7 +12,7 @@ export const get = async () => {
       link: "/en/article/" + post.attributes.slug,
       title: post.attributes.name,
       pubDate: post.attributes.date,
-      description:post.attributes.description
+      description: post.attributes.description,
     })),
     customData: `<language>${i18next.language}</language>`,
   });

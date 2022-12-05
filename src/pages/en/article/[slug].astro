@@ -127,9 +127,13 @@ const article = Astro.props;
             </span>
           )
         }
-        <span
-          >{t("post.by")} {article.attributes.auteur.data.attributes.name}</span
-        >
+        {
+          article.attributes.auteur && (
+            <span>
+              {t("post.by")} {article.attributes.auteur.data.attributes.name}
+            </span>
+          )
+        }
       </div>
     </div>
   </div>
